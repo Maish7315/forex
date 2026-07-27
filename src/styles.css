@@ -406,6 +406,7 @@ blockquote { max-width: 935px; margin: 0 0 39px; font: 500 clamp(29px, 4vw, 53px
   .mobile-only { display: inline-flex; margin-top: 7px; }
   .menu-button { display: grid; }
   .hero-section { min-height: 700px; height: 86vh; }
+  .hero-background { background-size: contain; }
   .hero-content { align-items: end; padding-bottom: 155px; }
   .hero-copy h1 { font-size: clamp(48px, 12vw, 75px); }
   .hero-meta { right: 18px; bottom: 105px; left: 18px; justify-content: space-between; }
