@@ -68,7 +68,7 @@ img { display: block; max-width: 100%; }
 
 .hero-section { position: relative; min-height: 740px; height: min(100vh, 900px); color: #f6f1e6; background: #19261f; isolation: isolate; }
 .hero-background, .hero-vignette, .hero-grain, .hero-sun { position: absolute; inset: 0; }
-.hero-background { z-index: -4; background-position: center; background-size: 100% 100%; background-repeat: no-repeat; filter: saturate(.82); }
+.hero-background { z-index: -4; background-position: center; background-size: cover; background-repeat: no-repeat; filter: saturate(.82); }
 .hero-vignette { z-index: -3; background: linear-gradient(90deg, rgba(8, 19, 13, .83) 0%, rgba(8, 19, 13, .44) 43%, rgba(8, 19, 13, .12) 75%), linear-gradient(0deg, rgba(6, 15, 11, .6), transparent 40%, rgba(6, 15, 11, .28)); }
 .hero-grain { z-index: -2; opacity: .14; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E"); mix-blend-mode: soft-light; }
 .hero-sun { z-index: -1; inset: auto 9% 14% auto; width: 210px; height: 210px; border-radius: 50%; background: rgba(236, 179, 74, .17); filter: blur(35px); }
