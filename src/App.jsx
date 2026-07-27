@@ -339,6 +339,7 @@ function App() {
           <div className="hero-vignette" />
           <div className="hero-grain" />
           <div className="hero-sun" />
+          <div className="hero-glow-top" />
           <div className="hero-content page-gutter">
             <motion.div key={`copy-${slide}`} className="hero-copy" initial="hidden" animate="visible" variants={stagger}>
               <motion.div variants={fadeUp} className="eyebrow eyebrow--gold"><span className="eyebrow-dot" />{hero.kicker}</motion.div>
