@@ -18,6 +18,7 @@ import {
   Landmark,
   Leaf,
   Lightbulb,
+  Facebook,
   Linkedin,
   MapPin,
   Menu,
@@ -36,7 +37,6 @@ import {
   TentTree,
   Trees,
   Twitter,
-  Users,
   X,
   Youtube,
   Zap,
@@ -50,7 +50,7 @@ const heroSlides = [
     title: 'Meet Kenya\nwith your whole heart.',
     body: 'The red earth, the warm welcome, the first light over the savannah — travel deeper with people who call this place home.',
     cta: 'Experience authentic Kenya',
-    image: `${ASSET}photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=2200&q=90`,
+    image: '/hero%20section/hero-image-3.jpeg',
     place: 'Loita Hills · Narok',
     accent: 'sunrise',
   },
@@ -59,7 +59,7 @@ const heroSlides = [
     title: 'Wild, in the\nmost beautiful way.',
     body: 'Track a lion at dawn. Hear an elephant breathe. Let the silence of the bush reset your sense of time.',
     cta: 'Find your wild',
-    image: `${ASSET}photo-1516426122078-c23e76319801?auto=format&fit=crop&w=2200&q=90`,
+    image: '/hero%20section/hero-image.jpeg',
     place: 'Tsavo · Amboseli · Mara',
     accent: 'gold',
   },
@@ -68,7 +68,7 @@ const heroSlides = [
     title: 'Witness nature’s\ngreatest theatre.',
     body: 'Follow the ancient rhythm of the herds across the Mara — with a front-row seat and the time to take it all in.',
     cta: 'Plan your migration',
-    image: `${ASSET}photo-1534177616072-ef7dc120449d?auto=format&fit=crop&w=2200&q=90`,
+    image: '/hero%20section/hero-image-2.jpeg',
     place: 'Maasai Mara · July–October',
     accent: 'orange',
   },
@@ -77,7 +77,7 @@ const heroSlides = [
     title: 'The ocean is calling.\nAnswer slowly.',
     body: 'Trade the road dust for salt air, turquoise water and long, unhurried days along Kenya’s luminous coast.',
     cta: 'Discover the coast',
-    image: `${ASSET}photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=2200&q=90`,
+    image: '/hero%20section/hero-image-4.jpeg',
     place: 'Watamu · Diani · Lamu',
     accent: 'coast',
   },
@@ -98,7 +98,7 @@ const destinations = [
     name: 'Maasai Mara',
     region: 'Rift Valley · 3 nights minimum',
     category: 'Wildlife',
-    image: `${ASSET}photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=86`,
+    image: '/The%20Great%20Migration%20_%20Maasai%20Mara.webp',
     tag: 'The main event',
     wildlife: 'Big cats · Wildebeest · 450+ birds',
     activities: 'Game drives · Balloon safari · Maasai culture',
@@ -107,7 +107,7 @@ const destinations = [
     name: 'Tsavo West',
     region: 'Eastern Kenya · 2 nights minimum',
     category: 'Wilderness',
-    image: `${ASSET}photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=86`,
+    image: '/tsavo.jpeg',
     tag: 'Our home ground',
     wildlife: 'Elephant · Rhino · Leopard',
     activities: 'Mzima Springs · Lava flows · Sundowners',
@@ -134,7 +134,7 @@ const destinations = [
     name: 'Lake Nakuru',
     region: 'Rift Valley · 2 nights minimum',
     category: 'Wildlife',
-    image: `${ASSET}photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=86`,
+    image: '/lake.jpeg',
     tag: 'A quick wild one',
     wildlife: 'Rhino · Flamingo · Lion',
     activities: 'Crater viewpoints · Birding · Forest drives',
@@ -157,13 +157,13 @@ const packages = [
 ]
 
 const galleryImages = [
-  { id: 1, title: 'Morning gold', category: 'Wildlife', image: `${ASSET}photo-1534177616072-ef7dc120449d?auto=format&fit=crop&w=1200&q=86`, span: 'tall' },
+  { id: 1, title: 'Morning gold', category: 'Wildlife', image: '/sun-set.jpeg', span: 'tall' },
   { id: 2, title: 'Red earth, open sky', category: 'Drone views', image: `${ASSET}photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=86`, span: 'wide' },
-  { id: 3, title: 'The welcome', category: 'Culture', image: `${ASSET}photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1200&q=86`, span: 'standard' },
-  { id: 4, title: 'A different kind of blue', category: 'Beaches', image: `${ASSET}photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1200&q=86`, span: 'standard' },
-  { id: 5, title: 'Between worlds', category: 'Luxury lodges', image: `${ASSET}photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=1200&q=86`, span: 'wide' },
+  { id: 3, title: 'The welcome', category: 'Culture', image: '/maasai.jpeg', span: 'standard' },
+  { id: 4, title: 'A different kind of blue', category: 'Beaches', image: '/Diani.webp', span: 'standard' },
+  { id: 5, title: 'Between worlds', category: 'Luxury lodges', image: '/Fields of Gold.jpeg', span: 'wide' },
   { id: 6, title: 'The long crossing', category: 'Migration', image: `${ASSET}photo-1535338454770-8be927b5a00b?auto=format&fit=crop&w=1200&q=86`, span: 'tall' },
-  { id: 7, title: 'Slow afternoons', category: 'Hotels', image: `${ASSET}photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=86`, span: 'standard' },
+  { id: 7, title: 'Slow afternoons', category: 'Hotels', image: '/Sundowners.jpeg', span: 'standard' },
   { id: 8, title: 'Wild at heart', category: 'Wildlife', image: `${ASSET}photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&w=1200&q=86`, span: 'standard' },
 ]
 
@@ -206,6 +206,7 @@ function App() {
   const [lightbox, setLightbox] = useState(null)
   const [bookingOpen, setBookingOpen] = useState(false)
   const [bookingSent, setBookingSent] = useState(false)
+  const [subscribed, setSubscribed] = useState(false)
   const [chatOpen, setChatOpen] = useState(false)
   const [chatMessages, setChatMessages] = useState([{ from: 'guide', text: 'Jambo! I’m Amani, your Bree safari guide. Where in Kenya is calling you?' }])
   const [chatInput, setChatInput] = useState('')
@@ -290,6 +291,7 @@ function App() {
     <div ref={appRef} className="app-shell" style={{ '--mouse-x': `${mouse.x}%`, '--mouse-y': `${mouse.y}%` }}>
       <div className="ambient-light" />
       <header className="site-header">
+        {bookingOpen && <button className="booking-page__back" onClick={() => setBookingOpen(false)} aria-label="Back to site"><ArrowLeft size={18} /> Back</button>}
         <a className="brand-lockup" href="#home" onClick={() => scrollTo('home')} aria-label="Bree Tours & Safaris home">
           <img src="/bree-logo.png" alt="Bree Tours & Safaris" />
           <span><strong>BREE</strong><small>TOURS & SAFARIS</small></span>
@@ -307,6 +309,29 @@ function App() {
       </header>
 
       <main>
+        {bookingOpen ? (
+          <section className="booking-page">
+            <div className="booking-page__inner">
+              <div className="booking-modal__intro"><SectionLabel light>LET'S START WITH A HELLO</SectionLabel><h2>Build your<br /><em>somewhere.</em></h2><p>Share a few details. A Bree expert will shape the rest around you.</p><div className="booking-modal__note"><Sparkles size={15} /> No prices here — just good conversations.</div></div>
+              <form className="booking-form" onSubmit={handleBooking}>
+                <div className="form-grid">
+                  <label>Full name<input name="Name" required placeholder="Your name" /></label>
+                  <label>Phone / WhatsApp<input name="Phone" required placeholder="+254 …" /></label>
+                  <label>Email<input name="Email" type="email" required placeholder="you@example.com" /></label>
+                  <label>Country<input name="Country" placeholder="Where are you travelling from?" /></label>
+                  <label>Adults<select name="Adults" defaultValue="2">{[1,2,3,4,5,6,7,8].map((n) => <option key={n}>{n}</option>)}</select></label>
+                  <label>Children<select name="Children" defaultValue="0">{[0,1,2,3,4].map((n) => <option key={n}>{n}</option>)}</select></label>
+                  <label>Preferred safari<select name="Preferred Safari" defaultValue="Maasai Mara"><option>Maasai Mara</option><option>Tsavo East & West</option><option>Migration season</option><option>Coast & islands</option><option>Kenya, slowly — custom route</option></select></label>
+                  <label>Travel dates<input name="Travel Dates" type="text" placeholder="e.g. 12–20 August 2026" /></label>
+                  <label className="form-full">Accommodation preference<select name="Accommodation Preference" defaultValue="Boutique luxury"><option>Boutique luxury</option><option>Classic safari lodge</option><option>Luxury tented camp</option><option>Family-friendly stays</option><option>Let's discuss</option></select></label>
+                  <label className="form-full">Message<textarea name="Message" rows="4" placeholder="Tell us about your dream safari..." /></label>
+                  <button type="submit" className="button button--gold">Send booking request <ArrowUpRight size={16} /></button>
+                </div>
+              </form>
+            </div>
+          </section>
+        ) : (
+          <>
         <section id="home" className="hero-section">
           <AnimatePresence mode="wait">
             <motion.div key={slide} className="hero-background" style={{ backgroundImage: `url(${hero.image})` }} initial={{ opacity: 0, scale: 1.06 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1.1, ease: 'easeOut' }} />
@@ -336,7 +361,7 @@ function App() {
         </section>
 
         <section className="big-five-section">
-          <div className="big-five-image" style={{ backgroundImage: `url(${ASSET}photo-1516426122078-c23e76319801?auto=format&fit=crop&w=2200&q=90)` }}><div className="big-five-image__stamp"><span>THE</span><strong>Big<br />Five</strong><small>experience</small></div><div className="big-five-image__caption"><span>01</span><i /><span>05</span><b>TAITA HILLS, KENYA</b></div></div>
+          <div className="big-five-image" style={{ backgroundImage: `url(/Addo%20and%20Schotia%20Tours.jpeg)` }}><div className="big-five-image__stamp"><span>THE</span><strong>Big<br />Five</strong><small>experience</small></div><div className="big-five-image__caption"><span>01</span><i /><span>05</span><b>TAITA HILLS, KENYA</b></div></div>
           <div className="big-five-copy page-gutter"><SectionLabel light>02 / THE ICONS</SectionLabel><h2>The rarest<br /><em>kind</em> of ordinary.</h2><p>There is a moment — just before the light turns — when the bush holds its breath. This is why we come. To see the world at its most alive, and to remember we belong to it.</p><div className="animal-list"><div className="animal-list__item is-selected"><span>01</span><strong>Lion</strong><small>the quiet authority</small></div><div className="animal-list__item"><span>02</span><strong>Elephant</strong><small>the ancient memory</small></div><div className="animal-list__item"><span>03</span><strong>Leopard</strong><small>the hidden grace</small></div></div><button className="button button--outline-light" onClick={() => setBookingOpen(true)}>Build my safari <ArrowUpRight size={16} /></button></div>
         </section>
 
@@ -357,16 +382,16 @@ function App() {
 
         <section className="booking-cta"><div className="booking-cta__glow" /><div className="page-gutter booking-cta__inner"><div><SectionLabel light>09 / YOUR TURN</SectionLabel><h2>Bring us your<br /><em>what if.</em></h2></div><div><p>Tell us the feeling you’re chasing. We’ll handle the rest.</p><button className="button button--gold" onClick={() => setBookingOpen(true)}>Start planning <ArrowUpRight size={17} /></button></div></div></section>
 
-        <section id="contact" className="contact-section section page-gutter"><div className="section-heading"><div><SectionLabel>10 / FIND US</SectionLabel><h2>Let’s make<br /><em>somewhere</em> happen.</h2></div><div className="section-heading__aside"><p>Our line is always open for a good question, a big idea, or that one place you can’t stop thinking about.</p><a className="text-link" href="mailto:breetoursandsafaris@gmail.com">breetoursandsafaris@gmail.com <ArrowUpRight size={16} /></a></div></div><div className="contact-grid"><div className="contact-card contact-card--dark"><MapPin size={21} /><span>Our base</span><strong>Narok — Bomet Highway</strong><small>Kenya, East Africa</small><a href="https://maps.google.com/?q=Narok+Bomet+Highway" target="_blank" rel="noreferrer">Open in maps <ArrowUpRight size={14} /></a></div><a className="contact-card contact-card--whatsapp" href="https://wa.me/254116600179" target="_blank" rel="noreferrer"><MessageCircle size={21} /><span>WhatsApp</span><strong>011 660 0179</strong><small>Usually replies within an hour</small><b>Say hello <ArrowUpRight size={14} /></b></a><a className="contact-card contact-card--light" href="tel:+254710986307"><Headphones size={21} /><span>Talk to a human</span><strong>0710 986 307</strong><small>Mon — Sat · 08:00 — 18:00</small><b>Call now <ArrowUpRight size={14} /></b></a></div></section>
+        <section id="contact" className="contact-section section page-gutter"><div className="section-heading"><div><SectionLabel>10 / FIND US</SectionLabel><h2>Let’s make<br /><em>somewhere</em> happen.</h2></div><div className="section-heading__aside"><p>Our line is always open for a good question, a big idea, or that one place you can’t stop thinking about.</p><a className="text-link" href="mailto:breetoursandsafaris@gmail.com">breetoursandsafaris@gmail.com <ArrowUpRight size={16} /></a></div></div><div className="contact-grid"><div className="contact-card contact-card--dark"><MapPin size={21} /><span>Our base</span><strong>Narok — Bomet Highway</strong><small>Kenya, East Africa</small><a href="https://maps.google.com/?q=Narok+Bomet+Highway" target="_blank" rel="noreferrer">Open in maps <ArrowUpRight size={14} /></a></div><a className="contact-card contact-card--whatsapp" href="https://wa.me/254116600179" target="_blank" rel="noreferrer"><MessageCircle size={21} /><span>WhatsApp</span><strong>011 660 0179</strong><small>Usually replies within an hour</small><b>Say hello <ArrowUpRight size={14} /></b></a><a className="contact-card contact-card--light" href="tel:+254710986309"><Headphones size={21} /><span>Talk to a human</span><strong>0710 986 309</strong><small>Mon — Sat · 08:00 — 18:00</small><b>Call now <ArrowUpRight size={14} /></b></a></div></section>
+          </>
+        )}
       </main>
 
-      <footer className="site-footer"><div className="page-gutter footer-top"><div className="footer-brand"><a className="brand-lockup" href="#home" onClick={() => scrollTo('home')}><img src="/bree-logo.png" alt="Bree Tours & Safaris" /><span><strong>BREE</strong><small>TOURS & SAFARIS</small></span></a><p>From Tsavo hospitality<br />to Mara adventure.</p><div className="social-row"><a href="https://instagram.com" aria-label="Instagram"><Instagram size={15} /></a><a href="https://facebook.com" aria-label="Facebook"><Users size={15} /></a><a href="https://youtube.com" aria-label="YouTube"><Youtube size={15} /></a><a href="https://x.com" aria-label="X"><Twitter size={15} /></a><a href="https://linkedin.com" aria-label="LinkedIn"><Linkedin size={15} /></a></div></div><div className="footer-links"><div><span>Explore</span><a href="#destinations">{t.destinations}</a><a href="#safaris">{t.safaris}</a><a href="#migration">{t.migration}</a><a href="#gallery">{t.gallery}</a></div><div><span>Get in touch</span><a href="mailto:breetoursandsafaris@gmail.com">Email us</a><a href="https://wa.me/254116600179">WhatsApp</a><a href="tel:+254710986307">Call the team</a><a href="#contact">Find us</a></div><div className="newsletter"><span>Field notes</span><p>Small stories from a big country. Once in a while.</p><form onSubmit={(event) => event.preventDefault()}><input type="email" placeholder="Your email address" aria-label="Your email address" /><button aria-label="Subscribe"><Send size={15} /></button></form><small>No noise. Just wonder.</small></div></div></div><div className="page-gutter footer-bottom"><span>© 2024 Bree Tours & Safaris Ltd.</span><span>Made with care in Kenya <span className="footer-dot">•</span> Privacy</span><span>Scroll back up <button onClick={() => scrollTo('home')}><ArrowUpRight size={14} /></button></span></div></footer>
+      {!bookingOpen && <footer className="site-footer"><div className="page-gutter footer-top"><div className="footer-brand"><a className="brand-lockup" href="#home" onClick={() => scrollTo('home')}><img src="/bree-logo.png" alt="Bree Tours & Safaris" /><span><strong>BREE</strong><small>TOURS & SAFARIS</small></span></a><p>From Tsavo hospitality<br />to Mara adventure.</p><div className="social-row"><a href="https://instagram.com" aria-label="Instagram"><Instagram size={15} /></a><a href="https://facebook.com" aria-label="Facebook"><Facebook size={15} /></a><a href="https://youtube.com" aria-label="YouTube"><Youtube size={15} /></a><a href="https://x.com" aria-label="X"><Twitter size={15} /></a><a href="https://linkedin.com" aria-label="LinkedIn"><Linkedin size={15} /></a></div></div><div className="footer-links"><div><span>Explore</span><a href="#destinations">{t.destinations}</a><a href="#safaris">{t.safaris}</a><a href="#migration">{t.migration}</a><a href="#gallery">{t.gallery}</a></div><div><span>Get in touch</span><a href="mailto:breetoursandsafaris@gmail.com">Email us</a><a href="https://wa.me/254116600179">WhatsApp</a><a href="tel:+254710986309">Call the team</a><a href="#contact">Find us</a></div><div className="newsletter"><span>Field notes</span><p>Small stories from a big country. Once in a while.</p>{subscribed ? <small style={{ color: 'var(--gold-bright)' }}>Confirmed — you are subscribed.</small> : <form onSubmit={(event) => { event.preventDefault(); setSubscribed(true) }}><input type="email" placeholder="Your email address" aria-label="Your email address" required /><button aria-label="Subscribe"><Send size={15} /></button></form>}<small>No noise. Just wonder.</small></div></div></div><div className="page-gutter footer-bottom"><span>© 2026 Bree Tours & Safaris Ltd.</span><span>Made with care in Kenya <span className="footer-dot">•</span> <a href="https://roy-tecxpro.netlify.app" target="_blank" rel="noreferrer" style={{ textDecoration: 'underline' }}>web developers portfolio</a></span><span>Scroll back up <button onClick={() => scrollTo('home')}><ArrowUpRight size={14} /></button></span></div></footer>}
 
       <AnimatePresence>{destination && <motion.div className="modal-backdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setDestination(null)}><motion.div className="destination-modal" initial={{ opacity: 0, y: 30, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 20, scale: 0.97 }} onClick={(event) => event.stopPropagation()}><button className="modal-close" onClick={() => setDestination(null)} aria-label="Close destination details"><X size={18} /></button><img src={destination.image} alt={destination.name} /><div className="destination-modal__content"><SectionLabel>{destination.category} / KENYA</SectionLabel><h2>{destination.name}</h2><p className="destination-modal__region">{destination.region}</p><div className="modal-detail-grid"><div><span>Wildlife</span><strong>{destination.wildlife}</strong></div><div><span>Best for</span><strong>{destination.activities}</strong></div></div><button className="button button--gold" onClick={() => { setDestination(null); setBookingOpen(true) }}>Plan this escape <ArrowUpRight size={16} /></button></div></motion.div></motion.div>}</AnimatePresence>
 
       <AnimatePresence>{lightbox && <motion.div className="lightbox" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setLightbox(null)}><button className="modal-close" onClick={() => setLightbox(null)} aria-label="Close image"><X size={18} /></button><motion.img initial={{ scale: 0.96 }} animate={{ scale: 1 }} src={lightbox.image} alt={lightbox.title} onClick={(event) => event.stopPropagation()} /><div className="lightbox-caption"><span>{lightbox.category}</span><strong>{lightbox.title}</strong></div></motion.div>}</AnimatePresence>
-
-      <AnimatePresence>{bookingOpen && <motion.div className="modal-backdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><motion.div className="booking-modal" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }}><div className="booking-modal__intro"><button className="modal-close" onClick={() => setBookingOpen(false)} aria-label="Close booking form"><X size={18} /></button><SectionLabel light>LET’S START WITH A HELLO</SectionLabel><h2>Build your<br /><em>somewhere.</em></h2><p>Share a few details. A Bree expert will shape the rest around you.</p><div className="booking-modal__note"><Sparkles size={15} /> No prices here — just good conversations.</div></div><form className="booking-form" onSubmit={handleBooking}><div className="form-grid"><label>Full name<input name="Name" required placeholder="Your name" /></label><label>Phone / WhatsApp<input name="Phone" required placeholder="+254 …" /></label><label>Email<input name="Email" type="email" required placeholder="you@example.com" /></label><label>Country<input name="Country" placeholder="Where are you travelling from?" /></label><label>Adults<select name="Adults" defaultValue="2">{[1,2,3,4,5,6,7,8].map((n) => <option key={n}>{n}</option>)}</select></label><label>Children<select name="Children" defaultValue="0">{[0,1,2,3,4].map((n) => <option key={n}>{n}</option>)}</select></label><label>Preferred safari<select name="Preferred Safari" defaultValue="Maasai Mara"><option>Maasai Mara</option><option>Tsavo East & West</option><option>Migration season</option><option>Coast & islands</option><option>Kenya, slowly — custom route</option></select></label><label>Travel dates<input name="Travel Dates" type="text" placeholder="e.g. 12–20 August 2025" /></label><label className="form-full">Accommodation preference<select name="Accommodation Preference" defaultValue="Boutique luxury"><option>Boutique luxury</option><option>Classic safari lodge</option><option>Luxury tented camp</option><option>Family-friendly stays</option><option>Let’s discuss</option></select></label><label className="form-full">Special requests<textarea name="Special Requests" rows="3" placeholder="Celebrations, accessibility, the dream you have in mind…" /></label></div><button className="button button--gold button--full" type="submit">Confirm & continue on WhatsApp <ArrowUpRight size={17} /></button><small className="form-disclaimer">By continuing, you agree that Bree may contact you about your enquiry.</small></form></motion.div></motion.div>}</AnimatePresence>
 
       <AnimatePresence>{bookingSent && <motion.div className="toast-success" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }}><div className="toast-success__icon"><Check size={18} /></div><div><strong>Thank you for booking with Bree Tours & Safaris Ltd.</strong><p>Please check your WhatsApp for your booking confirmation and one of our safari experts will contact you shortly.</p></div><button onClick={() => setBookingSent(false)} aria-label="Dismiss"><X size={15} /></button></motion.div>}</AnimatePresence>
 
