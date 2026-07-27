@@ -133,8 +133,8 @@ h2 em, h3 em { color: var(--gold); font-style: italic; }
 .destination-card__bottom small, .destination-card__bottom strong { display: block; }
 .destination-card__bottom small { margin-bottom: 7px; color: rgba(255,255,255,.7); font: 9px var(--mono); }
 .destination-card__bottom strong { font: 500 28px/1 var(--display); letter-spacing: -.02em; }
-.round-arrow { display: grid; place-items: center; width: 35px; height: 35px; border: 1px solid rgba(255,255,255,.46); border-radius: 50%; background: rgba(0,0,0,.12); transition: .2s ease; }
-.destination-card:hover .round-arrow { color: var(--forest); background: var(--gold-bright); border-color: var(--gold-bright); }
+.card-cta { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border: 1px solid rgba(255,255,255,.46); border-radius: 6px; background: rgba(0,0,0,.12); color: #fff; font: 9px var(--mono); letter-spacing: .06em; text-transform: uppercase; transition: .2s ease; }
+.destination-card:hover .card-cta { color: var(--forest); background: var(--gold-bright); border-color: var(--gold-bright); }
 
 .big-five-section { display: grid; grid-template-columns: 1fr 1fr; min-height: 690px; color: #f5f1e8; background: var(--forest-deep); }
 .big-five-image { position: relative; min-height: 640px; background-position: center; background-size: 100% 100%; background-repeat: no-repeat; isolation: isolate; transition: filter .4s ease; }
