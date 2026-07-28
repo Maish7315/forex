@@ -100,17 +100,26 @@ const destinations = [
     category: 'Wildlife',
     image: '/The%20Great%20Migration%20_%20Maasai%20Mara.webp',
     tag: 'The main event',
-    wildlife: 'Big cats · Wildebeest · 450+ birds',
-    activities: 'Game drives · Balloon safari · Maasai culture',
+    wildlife: 'Big five · Blue wildebeest · 450+ birds species · Maasai giraffe',
+    activities: 'Game drives · Hot air balloon safari · Bird migration observation · Wildebeest migration',
+  },
+  {
+    name: 'Tsavo East',
+    region: 'Eastern Kenya · 2 nights minimum',
+    category: 'Wilderness',
+    image: '/tsavo.jpeg',
+    tag: 'Our home ground',
+    wildlife: 'Red elephant · Lions',
+    activities: 'Yatta Plateau · Lugard Falls · Mudanda Rock · Aruba Dam · Bush breakfast',
   },
   {
     name: 'Tsavo West',
     region: 'Eastern Kenya · 2 nights minimum',
     category: 'Wilderness',
-    image: '/tsavo.jpeg',
-    tag: 'Our home ground',
-    wildlife: 'Elephant · Rhino · Leopard',
-    activities: 'Mzima Springs · Lava flows · Sundowners',
+    image: '/rhino.webp',
+    tag: 'Rhino country',
+    wildlife: 'Black rhino · Leopard',
+    activities: 'Mzima Springs · Shetani lava flow · Rhino sanctuary · Chaimu Crater · Five Sister Hills · Sundowners',
   },
   {
     name: 'Diani Beach',
@@ -125,7 +134,7 @@ const destinations = [
     name: 'Samburu',
     region: 'Northern frontier · 3 nights minimum',
     category: 'Culture',
-    image: `${ASSET}photo-1535338454770-8be927b5a00b?auto=format&fit=crop&w=1200&q=86`,
+    image: '/zebra.jpeg',
     tag: 'Far from familiar',
     wildlife: 'Grevy’s zebra · Gerenuk · Oryx',
     activities: 'Community visits · Nature walks · River safari',
@@ -148,17 +157,42 @@ const destinations = [
     wildlife: 'Sea turtles · Reef fish · Dolphins',
     activities: 'Marine park · Mangrove creek · Gede ruins',
   },
+  {
+    name: 'Amboseli',
+    region: 'Southern Kenya · 2 nights minimum',
+    category: 'Wildlife',
+    image: '/Amboseli.jpeg',
+    tag: 'Elephant kingdom',
+    wildlife: 'Africa bush elephants · Cheetah · Plains zebra · Africa fish eagle',
+    activities: 'Large herds of free-ranging elephants',
+  },
+  {
+    name: 'Viewing Mount Kilimanjaro',
+    region: 'Kenya / Tanzania border',
+    category: 'Scenic',
+    image: '/kilimanjaro view/Kilimanjaro.jpeg',
+    tag: "Africa's highest peak",
+    wildlife: '',
+    activities: '',
+  },
+]
+
+const kilimanjaroImages = [
+  '/kilimanjaro view/kilimanjaro (4).jpeg',
+  '/kilimanjaro view/kilimanjaro (2).jpeg',
+  '/kilimanjaro view/Kilimanjaro.jpeg',
+  '/kilimanjaro view/kilimanjaro (3).jpeg',
 ]
 
 const packages = [
   { index: '01', name: 'The Mara, Slowly', duration: '5 days / 4 nights', place: 'Maasai Mara', image: destinations[0].image, icon: TentTree, details: ['Private 4×4 with pop-up roof', 'Boutique tented camp', 'Daily sunrise & sunset drives'], tone: 'amber' },
   { index: '02', name: 'Tsavo in Gold', duration: '4 days / 3 nights', place: 'Tsavo East + West', image: destinations[1].image, icon: Mountain, details: ['Lodge with a view to the waterhole', 'Mzima Springs & Shetani Lava Flow', 'Bush breakfast and sundowner'], tone: 'green' },
-  { index: '03', name: 'Salt & Savannah', duration: '8 days / 7 nights', place: 'Mara + Diani', image: destinations[2].image, icon: Sun, details: ['Wildlife and coast in one arc', 'Handpicked beach retreat', 'Domestic flight connections'], tone: 'blue' },
+  { index: '03', name: 'Salt & Savannah', duration: '8 days / 7 nights', place: 'Mara + Diani', image: destinations[3].image, icon: Sun, details: ['Wildlife and coast in one arc', 'Handpicked beach retreat', 'Domestic flight connections'], tone: 'blue' },
 ]
 
 const galleryImages = [
   { id: 1, title: 'Morning gold', category: 'Wildlife', image: '/sun-set.jpeg', span: 'tall' },
-  { id: 2, title: 'Red earth, open sky', category: 'Drone views', image: `${ASSET}photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=86`, span: 'wide' },
+  { id: 2, title: 'Red earth, open sky', category: 'Drone views', image: '/Real adventures.jpeg', span: 'wide' },
   { id: 3, title: 'The welcome', category: 'Culture', image: '/maasai.jpeg', span: 'standard' },
   { id: 4, title: 'A different kind of blue', category: 'Beaches', image: '/Diani.webp', span: 'standard' },
   { id: 5, title: 'Between worlds', category: 'Luxury lodges', image: '/Fields of Gold.jpeg', span: 'wide' },
@@ -280,9 +314,21 @@ function App() {
     if (!clean) return
     const lower = clean.toLowerCase()
     let response = 'That sounds like a beautiful way to see Kenya. Tell me your dates and I’ll connect you with a safari expert on WhatsApp.'
-    if (lower.includes('migration') || lower.includes('when')) response = 'The herds usually reach the Mara between July and October. August and September are classic river-crossing months — but the Mara is remarkable all year.'
-    if (lower.includes('coast') || lower.includes('beach')) response = 'For warm water and a slower rhythm, I love Watamu and Diani. We can pair either with Tsavo for a seamless salt-and-savannah journey.'
-    if (lower.includes('book') || lower.includes('price')) response = 'Every Bree journey is tailored, so we keep pricing personal. Tap “Start planning” and share your dates — our experts will come back with the right route.'
+    if (lower.includes('migration') || lower.includes('when') || lower.includes('wildebeest') || lower.includes('great migration')) response = 'The herds usually reach the Mara between July and October. August and September are classic river-crossing months — but the Mara is remarkable all year.'
+    if (lower.includes('coast') || lower.includes('beach') || lower.includes('diani') || lower.includes('watamu') || lower.includes('lamu')) response = 'For warm water and a slower rhythm, I love Watamu and Diani. We can pair either with Tsavo for a seamless salt-and-savannah journey.'
+    if (lower.includes('book') || lower.includes('price') || lower.includes('cost') || lower.includes('how much')) response = 'Every Bree journey is tailored, so we keep pricing personal. Tap “Start planning” and share your dates — our experts will come back with the right route.'
+    if (lower.includes('big five') || lower.includes('lion') || lower.includes('elephant') || lower.includes('leopard') || lower.includes('rhino') || lower.includes('buffalo')) response = 'Kenya is one of the best places to see the Big Five. The Mara and Tsavo offer strong lion and elephant sightings, while Amboseli is famous for its elephant herds against the backdrop of Kilimanjaro.'
+    if (lower.includes('balloon') || lower.includes('hot air') || lower.includes('safari activity') || lower.includes('best for')) response = 'Hot-air ballooning over the Mara at sunrise is unforgettable. We also arrange guided game drives, bush breakfasts, walking safaris and cultural visits with Maasai communities.'
+    if (lower.includes('accommodation') || lower.includes('hotel') || lower.includes('lodge') || lower.includes('camp') || lower.includes('stay')) response = 'We work with boutique lodges, classic safari camps and luxury tented stays — all handpicked for location, comfort and atmosphere. Tell me your vibe and I’ll recommend the perfect fit.'
+    if (lower.includes('tsavo') || lower.includes('amboseli') || lower.includes('samburu') || lower.includes('nakuru') || lower.includes('destination')) response = 'Each destination has its own personality: the raw wilderness of Tsavo East, the rhino country of Tsavo West, the elephant kingdom of Amboseli, and the cultural richness of Samburu. Where does your heart pull you?'
+    if (lower.includes('hello') || lower.includes('hi') || lower.includes('hey') || lower.includes('good morning') || lower.includes('good evening')) response = 'Jambo! Welcome to Bree. Whether you’re after the Great Migration, a quiet coast escape or a luxury fly-in safari — I’m here to help you plan something special.'
+    if (lower.includes('safari') || lower.includes('tour') || lower.includes('itinerary') || lower.includes('plan')) response = 'We design safaris around your pace and interests. From 4-day escapes to 14-day adventures, every route is shaped by conversation. Share your dates and dream spots and I’ll set the wheels in motion.'
+    if (lower.includes('bird') || lower.includes('birding') || lower.includes('flamingo')) response = 'Kenya is a birder’s paradise. Lake Nakuru and Lake Bogoria offer flamingo spectacles, while the Mara hosts 450+ species including the African fish eagle and colourful rollers.'
+    if (lower.includes('kilimanjaro') || lower.includes('mountain') || lower.includes('view')) response = 'Mount Kilimanjaro is best viewed from Amboseli at sunrise — the snow-capped dome rises above the savannah like a dream. We can build your safari around that one unforgettable morning.'
+    if (lower.includes('family') || lower.includes('kids') || lower.includes('children')) response = 'Family safaris are wonderful. We choose camps with family suites, child-friendly guides and gentle game drives so everyone — from toddlers to grandparents — feels at home in the bush.'
+    if (lower.includes('honeymoon') || lower.includes('romantic') || lower.includes('couple') || lower.includes('anniversary')) response = 'A Kenyan safari under the stars is the perfect romantic chapter. We’ll arrange private dinners, sunset helicopter flights and exclusive camp stays just for two.'
+    if (lower.includes('lion') || lower.includes('leopard') || lower.includes('cheetah') || lower.includes('predator')) response = 'The Mara is predator central — lion, leopard, cheetah and hyena patrol these plains year-round. Our guides know the hot spots and will position you for the perfect sighting.'
+    if (lower.includes('gorilla') || lower.includes('chimpanzee')) response = 'While Kenya is world-famous for savannah safaris, we can also arrange chimpanzee trekking in the nearby forests. For mountain gorillas, our neighbours in Rwanda and Uganda are the best options — let me help you extend your adventure.'
     setChatMessages((messages) => [...messages, { from: 'user', text: clean }, { from: 'guide', text: response }])
     setChatInput('')
   }
@@ -352,7 +398,7 @@ function App() {
           <div className="hero-bottom page-gutter"><span>Scroll to explore</span><motion.span animate={{ y: [0, 7, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}><ArrowDownRight size={18} /></motion.span><div className="hero-progress"><span style={{ width: `${((slide + 1) / heroSlides.length) * 100}%` }} /></div></div>
         </section>
 
-        <section className="intro-strip"><div className="page-gutter intro-strip__inner"><div className="intro-mark"><Sunrise size={18} /><span>Kenya,<br />unfiltered.</span></div><p>We plan journeys that linger. Thoughtful routes, local stories and the kind of wilderness that stays with you long after the dust settles.</p><div className="intro-signature">Bree <span>/</span> 2024—<br /><small>made in Kenya</small></div></div></section>
+        <section className="intro-strip"><div className="page-gutter intro-strip__inner"><div className="intro-mark"><Sunrise size={18} /><span>Kenya,<br />unfiltered.</span></div><p>We plan journeys that linger. Thoughtful routes, local stories and the kind of wilderness that stays with you long after the dust settles.</p><div className="intro-signature">Bree /2026<br /><small>made in Kenya</small></div></div></section>
 
         <section id="destinations" className="section page-gutter destinations-section">
           <div className="section-heading"><div><SectionLabel>01 / THE PLACES</SectionLabel><h2>Go where the<br /><em>wild</em> feels close.</h2></div><div className="section-heading__aside"><p>From the red volcanic soil of Tsavo to the brilliant blue of Watamu, Kenya rewards the curious. We’ll help you find your own version of the iconic.</p><button className="text-link" onClick={() => scrollTo('safaris')}>See all journeys</button></div></div>
@@ -367,7 +413,7 @@ function App() {
         </section>
 
         <section id="migration" className="section page-gutter migration-section">
-          <div className="section-heading migration-heading"><div><SectionLabel>03 / THE GREAT MIGRATION</SectionLabel><h2>A rhythm older<br />than <em>memory.</em></h2></div><div className="countdown-card"><span>Next season begins in</span><div className="countdown-row">{migrationTime.map((value, index) => <div key={index}><strong>{String(value).padStart(2, '0')}</strong><small>{['days', 'hours', 'minutes', 'seconds'][index]}</small></div>)}</div></div></div>
+          <div className="section-heading migration-heading"><div><SectionLabel>03 / THE GREAT MIGRATION</SectionLabel><h2>A rhythm older<br />than <em>memory.</em></h2></div><div className="countdown-card">            <span>Wildebeest migration time remaining</span><div className="countdown-row">{migrationTime.map((value, index) => <div key={index}><strong>{String(value).padStart(2, '0')}</strong><small>{['days', 'hours', 'minutes', 'seconds'][index]}</small></div>)}</div></div></div>
           <div className="migration-layout"><div className="migration-map-card"><div className="map-header"><span><MapPin size={14} /> Northern Tanzania</span><span className="map-line" /><span>Kenya</span></div><div className="migration-map"><svg viewBox="0 0 500 250" role="img" aria-label="Illustrated migration route from Serengeti to Maasai Mara"><path className="map-land" d="M152 18c29 9 48 4 64 14l31-5 31 24 39 13 15 44 35 25-18 35-44 4-30 26-51-5-38 15-43-20-38-6-27-28 8-36-19-26 22-25 6-29 35-7z" /><path className="migration-route" d="M102 167C183 194 226 148 264 145s71 28 130-34" /><path className="migration-route migration-route--dashed" d="M98 163C180 187 228 139 267 139s78 28 135-32" /><circle className="map-pin map-pin--mara" cx="396" cy="112" r="7" /><circle className="map-pin map-pin--serengeti" cx="110" cy="166" r="7" /><circle className="map-pin map-pin--river" cx="275" cy="144" r="5" /><g className="map-label"><text x="366" y="94">MARA</text><text x="69" y="194">SERENGETI</text><text x="255" y="126">MARA RIVER</text></g></svg><div className="map-note"><span className="pulse-dot" />Follow the herds</div></div><div className="migration-foot"><span><Compass size={16} /> 800 km annual journey</span><span>July — October</span></div></div><div className="migration-copy"><p className="large-copy">Some experiences can’t be scheduled. They can only be met.</p><p>We’ll position you close to the action, then give you the rare luxury of time. For the river crossings, the quiet mornings, the dust rising beyond the horizon.</p><div className="facts"><div><strong>1.5m</strong><span>animals on the move</span></div><div><strong>4,000+</strong><span>predators follow</span></div><div><strong>500 km</strong><span>of the Mara ecosystem</span></div></div><button className="text-link" onClick={() => setBookingOpen(true)}>Talk to a migration expert</button></div></div>
         </section>
 
@@ -390,13 +436,13 @@ function App() {
 
       {!bookingOpen && <footer className="site-footer"><div className="page-gutter footer-top"><div className="footer-brand"><a className="brand-lockup" href="#home" onClick={() => scrollTo('home')}><img src="/bree-logo.png" alt="Bree Tours & Safaris" /><span><strong>BREE</strong><small>TOURS & SAFARIS</small></span></a><p>From Tsavo hospitality<br />to Mara adventure.</p><div className="social-row"><a href="https://instagram.com" aria-label="Instagram"><Instagram size={15} /></a><a href="https://facebook.com" aria-label="Facebook"><Facebook size={15} /></a><a href="https://youtube.com" aria-label="YouTube"><Youtube size={15} /></a><a href="https://x.com" aria-label="X"><Twitter size={15} /></a><a href="https://linkedin.com" aria-label="LinkedIn"><Linkedin size={15} /></a></div></div><div className="footer-links"><div><span>Explore</span><a href="#destinations">{t.destinations}</a><a href="#safaris">{t.safaris}</a><a href="#migration">{t.migration}</a><a href="#gallery">{t.gallery}</a></div><div><span>Get in touch</span><a href="mailto:breetoursandsafaris@gmail.com">Email us</a><a href="https://wa.me/254116600179">WhatsApp</a><a href="tel:+254710986309">Call the team</a><a href="#contact">Find us</a></div><div className="newsletter"><span>Field notes</span><p>Small stories from a big country. Once in a while.</p>{subscribed ? <small style={{ color: 'var(--gold-bright)' }}>Confirmed — you are subscribed.</small> : <form onSubmit={(event) => { event.preventDefault(); setSubscribed(true) }}><input type="email" placeholder="Your email address" aria-label="Your email address" required /><button aria-label="Subscribe"><Send size={15} /></button></form>}<small>No noise. Just wonder.</small></div></div></div><div className="page-gutter footer-bottom"><span>© 2026 Bree Tours & Safaris Ltd.</span><span>Made with care in Kenya <span className="footer-dot">•</span> <a href="https://roy-tecxpro.netlify.app" target="_blank" rel="noreferrer" style={{ textDecoration: 'underline' }}>web developers portfolio</a></span><span>Scroll back up <button onClick={() => scrollTo('home')}><ArrowUpRight size={14} /></button></span></div></footer>}
 
-      <AnimatePresence>{destination && <motion.div className="modal-backdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setDestination(null)}><motion.div className="destination-modal" initial={{ opacity: 0, y: 30, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 20, scale: 0.97 }} onClick={(event) => event.stopPropagation()}><button className="modal-close" onClick={() => setDestination(null)} aria-label="Close destination details"><X size={18} /></button><img src={destination.image} alt={destination.name} /><div className="destination-modal__content"><SectionLabel>{destination.category} / KENYA</SectionLabel><h2>{destination.name}</h2><p className="destination-modal__region">{destination.region}</p><div className="modal-detail-grid"><div><span>Wildlife</span><strong>{destination.wildlife}</strong></div><div><span>Best for</span><strong>{destination.activities}</strong></div></div><button className="button button--gold" onClick={() => { setDestination(null); setBookingOpen(true) }}>Book This Safari</button></div></motion.div></motion.div>}</AnimatePresence>
+      <AnimatePresence>{destination && <motion.div className="modal-backdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setDestination(null)}><motion.div className={`destination-modal${destination.name === 'Viewing Mount Kilimanjaro' ? ' destination-modal--wide' : ''}`} initial={{ opacity: 0, y: 30, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 20, scale: 0.97 }} onClick={(event) => event.stopPropagation()}>{destination.name === 'Viewing Mount Kilimanjaro' ? (<div className="kilimanjaro-modal-content"><button className="modal-close" onClick={() => setDestination(null)} aria-label="Close destination details"><X size={18} /></button><div className="page-gutter"><SectionLabel>{destination.category} / KENYA & TANZANIA</SectionLabel><h2>Viewing Mount Kilimanjaro</h2><p>The snow-capped peak of Africa's highest mountain — best viewed from the Amboseli plains at sunrise.</p><div className="kilimanjaro-grid">{kilimanjaroImages.map((img, i) => <img key={i} src={img} alt={`Kilimanjaro view ${i + 1}`} />)}</div></div></div>) : (<><button className="modal-close" onClick={() => setDestination(null)} aria-label="Close destination details"><X size={18} /></button><img src={destination.image} alt={destination.name} /><div className="destination-modal__content"><SectionLabel>{destination.category} / KENYA</SectionLabel><h2>{destination.name}</h2><p className="destination-modal__region">{destination.region}</p><div className="modal-detail-grid"><div><span>Wildlife</span><strong>{destination.wildlife}</strong></div><div><span>Best for</span><strong>{destination.activities}</strong></div></div><button className="button button--gold" onClick={() => { setDestination(null); setBookingOpen(true) }}>Book This Safari</button></div></>)}</motion.div></motion.div>}</AnimatePresence>
 
       <AnimatePresence>{lightbox && <motion.div className="lightbox" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setLightbox(null)}><button className="modal-close" onClick={() => setLightbox(null)} aria-label="Close image"><X size={18} /></button><motion.img initial={{ scale: 0.96 }} animate={{ scale: 1 }} src={lightbox.image} alt={lightbox.title} onClick={(event) => event.stopPropagation()} /><div className="lightbox-caption"><span>{lightbox.category}</span><strong>{lightbox.title}</strong></div></motion.div>}</AnimatePresence>
 
       <AnimatePresence>{bookingSent && <motion.div className="toast-success" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }}><div className="toast-success__icon"><Check size={18} /></div><div><strong>Thank you for booking with Bree Tours & Safaris Ltd.</strong><p>Please check your WhatsApp for your booking confirmation and one of our safari experts will contact you shortly.</p></div><button onClick={() => setBookingSent(false)} aria-label="Dismiss"><X size={15} /></button></motion.div>}</AnimatePresence>
 
-      <div className={`chatbot ${chatOpen ? 'chatbot--open' : ''}`}><AnimatePresence>{chatOpen && <motion.div className="chat-window" initial={{ opacity: 0, y: 15, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 15, scale: 0.96 }}><div className="chat-header"><div className="chat-avatar"><Sparkles size={17} /></div><div><strong>Bree Agent</strong><small>Your Bree guide · online</small></div><button onClick={() => setChatOpen(false)} aria-label="Close assistant"><X size={16} /></button></div><div className="chat-messages">{chatMessages.map((message, index) => <div key={`${message.text}-${index}`} className={`chat-message chat-message--${message.from}`}>{message.text}</div>)}</div><div className="chat-suggestions"><button onClick={() => sendChat('When is the migration?')}>When is migration?</button><button onClick={() => sendChat('Tell me about the coast')}>Tell me about the coast</button><button onClick={() => sendChat('I want to book')}>I want to book</button></div><form className="chat-input" onSubmit={(event) => { event.preventDefault(); sendChat() }}><input value={chatInput} onChange={(event) => setChatInput(event.target.value)} placeholder="Ask Bree Agent anything…" /><button aria-label="Send message"><Send size={16} /></button></form></motion.div>}</AnimatePresence><button className="chat-trigger" onClick={() => setChatOpen((open) => !open)} aria-label="Open safari assistant"><span className="chat-trigger__pulse" /><MessageCircle size={20} />{!chatOpen && <span className="chat-trigger__label">Ask Bree Agent</span>}</button></div>
+      <div className={`chatbot ${chatOpen ? 'chatbot--open' : ''}`}><AnimatePresence>{chatOpen && <motion.div className="chat-window" initial={{ opacity: 0, y: 15, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 15, scale: 0.96 }}><div className="chat-header"><div className="chat-avatar"><Sparkles size={17} /></div><div><strong>Bree Agent</strong><small>Your Bree guide · online</small></div><button onClick={() => setChatOpen(false)} aria-label="Close assistant"><X size={16} /></button></div><div className="chat-messages">{chatMessages.map((message, index) => <div key={`${message.text}-${index}`} className={`chat-message chat-message--${message.from}`}>{message.text}</div>)}</div>        <div className="chat-suggestions"><button onClick={() => sendChat('When is the wildebeest migration?')}>Wildebeest migration</button><button onClick={() => sendChat('Tell me about the Big Five')}>Big Five</button><button onClick={() => sendChat('Tell me about the coast')}>Coast & beaches</button><button onClick={() => sendChat('What activities do you offer?')}>Activities</button><button onClick={() => sendChat('I want to plan a family safari')}>Family safari</button><button onClick={() => sendChat('Tell me about Kilimanjaro views')}>Kilimanjaro views</button><button onClick={() => sendChat('I want to book')}>Book now</button></div><form className="chat-input" onSubmit={(event) => { event.preventDefault(); sendChat() }}><input value={chatInput} onChange={(event) => setChatInput(event.target.value)} placeholder="Ask Bree Agent anything…" /><button aria-label="Send message"><Send size={16} /></button></form></motion.div>}</AnimatePresence><button className="chat-trigger" onClick={() => setChatOpen((open) => !open)} aria-label="Open safari assistant"><span className="chat-trigger__pulse" /><MessageCircle size={20} />{!chatOpen && <span className="chat-trigger__label">Ask Bree Agent</span>}</button></div>
     </div>
   )
 }

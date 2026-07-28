@@ -334,6 +334,11 @@ blockquote { max-width: 935px; margin: 0 0 39px; font: 500 clamp(29px, 4vw, 53px
 .modal-detail-grid strong { font: 500 17px var(--display); }
 .modal-close { position: absolute; z-index: 2; top: 15px; right: 15px; display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.4); border-radius: 50%; color: #fff; background: rgba(0,0,0,.28); }
 .destination-modal .modal-close { color: var(--ink); border-color: var(--line); background: var(--paper); }
+.destination-modal--wide { grid-template-columns: 1fr; }
+.kilimanjaro-modal-content { padding: 0; }
+.kilimanjaro-modal-content .page-gutter { padding-top: 45px; padding-bottom: 45px; }
+.kilimanjaro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 24px; }
+.kilimanjaro-grid img { width: 100%; height: 250px; object-fit: cover; }
 .lightbox { background: rgba(3, 8, 5, .9); }
 .lightbox img { max-width: min(1000px, 95vw); max-height: 78vh; object-fit: contain; box-shadow: 0 24px 75px rgba(0,0,0,.5); }
 .lightbox-caption { position: absolute; right: 32px; bottom: 24px; left: 32px; display: grid; gap: 5px; color: #fff; }
