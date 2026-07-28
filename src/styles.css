@@ -433,7 +433,7 @@ blockquote { max-width: 935px; margin: 0 0 39px; font: 500 clamp(29px, 4vw, 53px
   .big-five-copy { padding-top: 60px; padding-bottom: 75px; }
   .migration-layout, .story-grid { grid-template-columns: 1fr; gap: 50px; }
   .migration-heading { display: flex; flex-wrap: wrap; align-items: end; }
-  .countdown-card { width: 100%; }
+  .countdown-card { width: 100%; margin-top: 12px; }
   .migration-map { height: 260px; }
   .coast-content { display: grid; align-content: end; gap: 50px; }
   .coast-content__aside { width: min(400px, 100%); }
