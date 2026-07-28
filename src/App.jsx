@@ -128,7 +128,7 @@ const destinations = [
     image: `${ASSET}photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=86`,
     tag: 'The soft landing',
     wildlife: 'Dolphins · Turtles · Whale sharks',
-    activities: 'Reef snorkelling · Dhow sails · Island lunches',
+    activities: 'Sky diving · Dolphin viewing · Golden fish · Crystal clear waters',
   },
   {
     name: 'Samburu',
@@ -145,8 +145,8 @@ const destinations = [
     category: 'Wildlife',
     image: '/lake.jpeg',
     tag: 'A quick wild one',
-    wildlife: 'Rhino · Flamingo · Lion',
-    activities: 'Crater viewpoints · Birding · Forest drives',
+    wildlife: 'White rhino · Black rhino · Waterbuck · Rothschild\'s giraffe · Flamingos',
+    activities: 'Menengai Crater · Thomson\'s Falls · Hyrax Hill Prehistoric Site · Lord Egerton Castle · Forest drives',
   },
   {
     name: 'Watamu',
@@ -242,7 +242,7 @@ function App() {
   const [bookingSent, setBookingSent] = useState(false)
   const [subscribed, setSubscribed] = useState(false)
   const [chatOpen, setChatOpen] = useState(false)
-  const [chatMessages, setChatMessages] = useState([{ from: 'guide', text: 'Jambo! I’m Bree Agent, your Bree safari guide. Where in Kenya is calling you?' }])
+  const [chatMessages, setChatMessages] = useState([{ from: 'guide', text: 'Jambo! karibu Bree Tours 💕\nwe\'re so glad you\'re here.\nwe\'re currently helping travelers in the wild, but tell us where you dream of going and we\'ll make it unforgettable for you.\nThank you!\nwe\'ll reply shortly. 😊' }])
   const [chatInput, setChatInput] = useState('')
   const [countdown, setCountdown] = useState(() => {
     const now = new Date()

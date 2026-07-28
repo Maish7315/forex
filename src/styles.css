@@ -381,7 +381,7 @@ blockquote { max-width: 935px; margin: 0 0 39px; font: 500 clamp(29px, 4vw, 53px
 .chat-header small { color: rgba(244,240,229,.6); font: 8px var(--mono); }
 .chat-header > button { margin-left: auto; border: 0; color: rgba(244,240,229,.75); background: transparent; }
 .chat-messages { display: flex; flex: 1; flex-direction: column; gap: 9px; padding: 16px; overflow-y: auto; }
-.chat-message { max-width: 85%; padding: 10px 11px; border-radius: 2px 12px 12px 12px; font-size: 11px; line-height: 1.55; }
+.chat-message { max-width: 85%; padding: 10px 11px; border-radius: 2px 12px 12px 12px; font-size: 11px; line-height: 1.55; white-space: pre-wrap; }
 .chat-message--guide { color: var(--ink); background: color-mix(in srgb, var(--paper), var(--gold) 10%); }
 .chat-message--user { align-self: end; border-radius: 12px 2px 12px 12px; color: #f4f0e5; background: var(--forest-soft); }
 .chat-suggestions { display: flex; gap: 6px; padding: 0 12px 11px; overflow-x: auto; }
