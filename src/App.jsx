@@ -242,7 +242,7 @@ function App() {
   const [bookingSent, setBookingSent] = useState(false)
   const [subscribed, setSubscribed] = useState(false)
   const [chatOpen, setChatOpen] = useState(false)
-  const [chatMessages, setChatMessages] = useState([{ from: 'guide', text: 'Jambo! karibu Bree Tours 💕\nwe\'re so glad you\'re here.\nwe\'re currently helping travelers in the wild, but tell us where you dream of going and we\'ll make it unforgettable for you.\nThank you!\nwe\'ll reply shortly. 😊' }])
+  const [chatMessages, setChatMessages] = useState([{ from: 'guide', text: 'Hello and welcome to Bree Tours & Safaris!\n\nI\'m your virtual safari assistant. I can help you discover safari destinations, recommend packages, answer travel questions and guide you through our services.\n\nHow can I help you plan your next adventure today?' }])
   const [chatInput, setChatInput] = useState('')
   const [countdown, setCountdown] = useState(() => {
     const now = new Date()
@@ -289,6 +289,12 @@ function App() {
     return () => window.removeEventListener('pointermove', handlePointer)
   }, [])
 
+  useEffect(() => {
+    if (chatOpen) {
+      setChatMessages([{ from: 'guide', text: 'Hello and welcome to Bree Tours & Safaris!\n\nI\'m your virtual safari assistant. I can help you discover safari destinations, recommend packages, answer travel questions and guide you through our services.\n\nHow can I help you plan your next adventure today?' }])
+    }
+  }, [chatOpen])
+
   const migrationTime = formatTime(countdown)
   const filteredGallery = useMemo(() => galleryFilter === 'All' ? galleryImages : galleryImages.filter((item) => item.category.toLowerCase() === galleryFilter.toLowerCase()), [galleryFilter])
 
@@ -309,26 +315,250 @@ function App() {
     window.setTimeout(() => setBookingSent(false), 8000)
   }
 
-  const sendChat = (suggestion = chatInput) => {
-    const clean = suggestion.trim()
+  const accommodationTypes = ['Boutique lodges', 'Classic safari camps', 'Luxury tented stays', 'Family-friendly camps', 'Beach resorts']
+  const transportOptions = ['Private 4×4 with pop-up roof', 'Domestic flights between parks', 'Scheduled shuttles', 'Helicopter transfers']
+  const wildlifeExperiences = ['Game drives at sunrise and sunset', 'Hot air balloon safaris', 'Walking safaris with armed guides', 'Bird watching excursions', 'Cultural visits with Maasai communities', 'Bush breakfasts and sundowners']
+  const maasaiExperiences = ['Maasai village visits', 'Traditional dance performances', 'Learn about Maasai customs and traditions', 'Community-led nature walks']
+  const beachInfo = 'Kenya\'s coast offers turquoise waters, white sand, and a slower rhythm. Watamu and Diani are our top picks — perfect for dolphin watching, marine parks, and unhurried days by the sea.'
+  const travelTips = [
+    'Pack light, breathable clothing in neutral tones — bright colours can scare wildlife.',
+    'Bring a good pair of binoculars — they make all the difference on game drives.',
+    'The dry seasons (June–October and January–February) offer the best wildlife viewing.',
+    'Malaria prophylaxis is recommended for coastal and lowland areas.',
+    'Carry cash in small denominations — many lodges and camps are off-grid.',
+  ]
+
+  const faqs = {
+    'best time to visit': 'The dry seasons — June to October and January to February — offer the best wildlife viewing. The Great Migration runs from July to October in the Maasai Mara.',
+    'how much does a safari cost': 'Every Bree journey is tailored, so pricing depends on your dates, group size, and preferences. Share your travel plans and we\'ll put together a personalised quotation.',
+    'is it safe': 'Kenya is a wonderful and welcoming destination. We choose lodges and camps in safe, established areas and our guides are highly trained in wilderness safety.',
+    'can i combine beach and safari': 'Absolutely. Our Salt & Savannah package combines the Maasai Mara with Diani Beach — a perfect blend of wildlife and relaxation.',
+    'what should i pack': 'Lightweight neutral-toned clothing, a good pair of binoculars, sunscreen, a hat, comfortable walking shoes, and a camera with extra batteries.',
+    'do you offer group tours': 'We primarily design private, tailored journeys. Group departures can be arranged for select routes — just ask.',
+    'what payment methods do you accept': 'We accept bank transfers and mobile money. A deposit secures your booking, with the balance due closer to departure.',
+  }
+
+  const chatMemory = { destination: null, travelDates: null, travellers: null, budget: null, accommodation: null, pickupLocation: null, interests: [], bookingStep: 0 }
+
+  function detectIntent(text) {
+    const lower = text.toLowerCase().trim()
+    const greetings = ['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening', 'howdy', 'greetings', 'jambo']
+    if (greetings.some(g => lower.includes(g))) return 'greeting'
+    if (lower.includes('who are you') || lower.includes('what are you') || lower.includes('your name')) return 'identity'
+    if (lower.includes('what can you do') || lower.includes('help me') || lower.includes('what do you do')) return 'capabilities'
+    if (lower.includes('book') || lower.includes('reserve') || lower.includes('i want to book') || lower.includes('let\'s book') || lower.includes('plan a trip') || lower.includes('start planning') || lower.includes('how do i book')) return 'booking_start'
+    if (lower.includes('price') || lower.includes('cost') || lower.includes('how much') || lower.includes('quotation') || lower.includes('quote') || lower.includes('budget') || lower.includes('affordable')) return 'pricing'
+    if (lower.includes('migration') || lower.includes('great migration') || lower.includes('wildebeest')) return 'migration'
+    if (lower.includes('coast') || lower.includes('beach') || lower.includes('diani') || lower.includes('watamu') || lower.includes('lamu')) return 'coast'
+    if (lower.includes('big five') || lower.includes('lion') || lower.includes('elephant') || lower.includes('leopard') || lower.includes('rhino') || lower.includes('buffalo')) return 'big_five'
+    if (lower.includes('balloon') || lower.includes('hot air') || lower.includes('balloon safari') || lower.includes('best activity')) return 'activities'
+    if (lower.includes('accommodation') || lower.includes('hotel') || lower.includes('lodge') || lower.includes('camp') || lower.includes('stay') || lower.includes('where to stay')) return 'accommodation'
+    if (lower.includes('tsavo') || lower.includes('amboseli') || lower.includes('samburu') || lower.includes('nakuru') || lower.includes('destination') || lower.includes('which park')) return 'destination'
+    if (lower.includes('safari') || lower.includes('tour') || lower.includes('itinerary') || lower.includes('plan my')) return 'safari_plan'
+    if (lower.includes('bird') || lower.includes('birding') || lower.includes('flamingo')) return 'birding'
+    if (lower.includes('kilimanjaro') || lower.includes('mountain') || lower.includes('view')) return 'kilimanjaro'
+    if (lower.includes('family') || lower.includes('kids') || lower.includes('children') || lower.includes('child-friendly')) return 'family'
+    if (lower.includes('honeymoon') || lower.includes('romantic') || lower.includes('couple') || lower.includes('anniversary') || lower.includes('proposal')) return 'honeymoon'
+    if (lower.includes('lion') || lower.includes('predator') || lower.includes('cheetah')) return 'predators'
+    if (lower.includes('gorilla') || lower.includes('chimpanzee') || lower.includes('primate')) return 'primate'
+    if (lower.includes('culture') || lower.includes('maasai') || lower.includes('local people') || lower.includes('traditional')) return 'culture'
+    if (lower.includes('beach holiday') || lower.includes('beach vacation') || lower.includes('coast holiday')) return 'beach_holiday'
+    if (lower.includes('tip') || lower.includes('advice') || lower.includes('travel tip') || lower.includes('what should i bring')) return 'travel_tips'
+    if (lower.includes('thank') || lower.includes('thanks')) return 'thanks'
+    if (lower.includes('bye') || lower.includes('goodbye') || lower.includes('see you')) return 'goodbye'
+    if (lower.includes('help') || lower.includes('support') || lower.includes('contact') || lower.includes('human')) return 'human_contact'
+    if (chatMemory.bookingStep > 0) return 'booking_flow'
+    return 'general'
+  }
+
+  function extractDestination(text) {
+    const lower = text.toLowerCase()
+    for (const dest of destinations) {
+      if (lower.includes(dest.name.toLowerCase())) return dest
+    }
+    if (lower.includes('mara') || lower.includes('maasai mara')) return destinations[0]
+    if (lower.includes('tsavo')) return destinations[1]
+    if (lower.includes('coast') || lower.includes('beach') || lower.includes('diani')) return destinations[3]
+    if (lower.includes('samburu')) return destinations[4]
+    if (lower.includes('nakuru') || lower.includes('lake nakuru')) return destinations[5]
+    if (lower.includes('amboseli')) return destinations[7]
+    if (lower.includes('kilimanjaro')) return destinations[8]
+    return null
+  }
+
+  function extractInterest(text) {
+    const lower = text.toLowerCase()
+    const interests = []
+    if (lower.includes('lion') || lower.includes('predator') || lower.includes('cheetah')) interests.push('predators')
+    if (lower.includes('elephant')) interests.push('elephants')
+    if (lower.includes('bird') || lower.includes('birding') || lower.includes('flamingo')) interests.push('birding')
+    if (lower.includes('photograph') || lower.includes('photo') || lower.includes('camera')) interests.push('photography')
+    if (lower.includes('family') || lower.includes('kids') || lower.includes('children')) interests.push('family')
+    if (lower.includes('honeymoon') || lower.includes('romantic') || lower.includes('couple')) interests.push('romance')
+    if (lower.includes('budget') || lower.includes('affordable') || lower.includes('cheap')) interests.push('budget')
+    if (lower.includes('luxury') || lower.includes('premium') || lower.includes('exclusive')) interests.push('luxury')
+    if (lower.includes('adventure') || lower.includes('active') || lower.includes('hiking')) interests.push('adventure')
+    if (lower.includes('culture') || lower.includes('maasai') || lower.includes('local')) interests.push('culture')
+    if (lower.includes('beach') || lower.includes('coast') || lower.includes('ocean')) interests.push('beach')
+    if (lower.includes('migration') || lower.includes('wildebeest') || lower.includes('great migration')) interests.push('migration')
+    if (lower.includes('camp') || lower.includes('camping')) interests.push('camping')
+    return interests
+  }
+
+  function recommendByInterests(interests) {
+    const recs = []
+    if (interests.includes('migration') || interests.includes('predators')) recs.push('Maasai Mara — for the Great Migration and predator action')
+    if (interests.includes('elephants')) recs.push('Amboseli — famous for large elephant herds with Kilimanjaro views')
+    if (interests.includes('birding')) recs.push('Lake Nakuru — a birder\'s paradise with flamingos and rhinos')
+    if (interests.includes('photography')) recs.push('Maasai Mara and Amboseli — both offer stunning sunrise and wildlife photography')
+    if (interests.includes('family')) recs.push('Family-friendly camps in the Mara — with suites and child-friendly guides')
+    if (interests.includes('romance')) recs.push('A private tented camp in the Mara — exclusive and unforgettable')
+    if (interests.includes('budget')) recs.push('Tsavo East — a more affordable wilderness experience with incredible landscapes')
+    if (interests.includes('luxury')) recs.push('A luxury tented camp in the Mara or a boutique lodge in Tsavo')
+    if (interests.includes('culture')) recs.push('Samburu — rich in Maasai and Samburu cultural experiences')
+    if (interests.includes('beach')) recs.push('Diani Beach or Watamu — turquoise waters and white sand')
+    if (interests.includes('adventure')) recs.push('Tsavo West — with its volcanic landscapes, springs, and crater hikes')
+    if (interests.includes('camping')) recs.push('Classic safari camping in the Mara or Tsavo')
+    if (recs.length === 0) return 'I\'d love to help you find the perfect destination! Could you tell me what kind of experience you\'re after — wildlife, beaches, culture, adventure, or something else?'
+    let response = 'Based on your interests, here are some recommendations:\n\n'
+    recs.forEach((rec, i) => { response += `${i + 1}. ${rec}\n` })
+    response += '\nWould you like more details on any of these, or shall we start planning your trip?'
+    return response
+  }
+
+  function handleBookingFlow(text) {
+    const lower = text.toLowerCase().trim()
+    switch (chatMemory.bookingStep) {
+      case 1: {
+        const dest = extractDestination(text)
+        if (dest) { chatMemory.destination = dest.name; chatMemory.bookingStep = 2 }
+        else { chatMemory.bookingStep = 2 }
+        return 'Got it! When are you planning to travel?'
+      }
+      case 2:
+        chatMemory.travelDates = text
+        chatMemory.bookingStep = 3
+        return 'How many people will be travelling with you?'
+      case 3:
+        chatMemory.travellers = text
+        chatMemory.bookingStep = 4
+        return 'What\'s your budget range? This helps me recommend the right level of accommodation and experience.'
+      case 4:
+        chatMemory.budget = text
+        chatMemory.bookingStep = 5
+        return 'What kind of accommodation do you prefer? We offer boutique lodges, classic safari camps, luxury tented stays, family-friendly camps, and beach resorts.'
+      case 5:
+        chatMemory.accommodation = text
+        chatMemory.bookingStep = 6
+        return 'Where will you be flying from, or where would you like to be picked up?'
+      case 6:
+        chatMemory.pickupLocation = text
+        chatMemory.bookingStep = 0
+        const parts = ['Here\'s a summary of your trip:']
+        if (chatMemory.destination) parts.push(`Destination: ${chatMemory.destination}`)
+        if (chatMemory.travelDates) parts.push(`Dates: ${chatMemory.travelDates}`)
+        if (chatMemory.travellers) parts.push(`Travellers: ${chatMemory.travellers}`)
+        if (chatMemory.budget) parts.push(`Budget: ${chatMemory.budget}`)
+        if (chatMemory.accommodation) parts.push(`Accommodation: ${chatMemory.accommodation}`)
+        if (chatMemory.pickupLocation) parts.push(`Pickup: ${chatMemory.pickupLocation}`)
+        return parts.join('\n') + '\n\nTo proceed, I\'ll connect you with our booking team. Would you like me to share your details with them via WhatsApp?'
+      default:
+        chatMemory.bookingStep = 0
+        return 'Let\'s start fresh! Which destination are you most interested in?'
+    }
+  }
+
+  function generateResponse(intent, text) {
+    switch (intent) {
+      case 'greeting': {
+        const hour = new Date().getHours()
+        let timeGreeting = 'Hello'
+        if (hour >= 5 && hour < 12) timeGreeting = 'Good morning'
+        else if (hour >= 12 && hour < 17) timeGreeting = 'Good afternoon'
+        else if (hour >= 17) timeGreeting = 'Good evening'
+        return `${timeGreeting} and welcome to Bree Tours & Safaris! I'm your virtual safari assistant — I can help you discover destinations, recommend packages, answer travel questions, and guide you through our services. Where shall we begin your adventure?`
+      }
+      case 'identity':
+        return `I'm Bree Tours & Safaris' virtual assistant. I'm here to answer questions about our tours, destinations, accommodation, transport, wildlife experiences, and other information available on our website. If you need personalised quotations or assistance completing a booking, I'll gladly connect you with one of our travel consultants.`
+      case 'capabilities':
+        return `I can help you with a lot of things! Here's what I do best:\n\n• Recommend safaris tailored to your interests\n• Explain destinations and national parks\n• Compare parks and help you choose\n• Suggest itineraries based on your vibe\n• Answer FAQs about travel and safari\n• Help plan trips from scratch\n• Explain accommodation and transport options\n• Share wildlife and cultural experiences\n• Guide you toward booking\n\nWhat are you dreaming about?`
+      case 'migration':
+        return 'The herds usually reach the Maasai Mara between July and October. August and September are classic river-crossing months — but the Mara is remarkable all year round. If you want to witness the Great Migration, I\'d recommend planning for July through October. Would you like me to suggest a specific itinerary?'
+      case 'coast':
+        return 'For warm water and a slower rhythm, I love Watamu and Diani. We can pair either with Tsavo for a seamless salt-and-savannah journey. The coast is also wonderful for dolphin watching, marine parks, and unhurried beach days. Are you thinking of combining the beach with a safari?'
+      case 'big_five':
+        return 'Kenya is one of the best places to see the Big Five. The Mara and Tsavo offer strong lion and elephant sightings, while Amboseli is famous for its elephant herds against the backdrop of Kilimanjaro. Each park has its own character — would you like me to recommend the best destination for your interests?'
+      case 'activities':
+        return 'We arrange a range of experiences beyond game drives:\n\n• Hot-air ballooning over the Mara at sunrise\n• Guided walking safaris with armed rangers\n• Bush breakfasts and sundowner sessions\n• Bird watching excursions\n• Cultural visits with Maasai communities\n• Marine park excursions on the coast\n\nWhich of these sounds most appealing to you?'
+      case 'accommodation':
+        return 'We work with a handpicked selection of places to stay:\n\n• Boutique lodges — intimate and stylish\n• Classic safari camps — authentic and comfortable\n• Luxury tented camps — the best of both worlds\n• Family-friendly camps — great for all ages\n• Beach resorts — perfect for coastal stays\n\nTell me what kind of experience you\'re after and I\'ll recommend the ideal fit.'
+      case 'destination': {
+        const dest = extractDestination(text)
+        if (dest) {
+          let response = `${dest.name} — ${dest.tag}. This destination is known for ${dest.wildlife || 'its unique landscapes'}. Activities include ${dest.activities || 'guided exploration'}.`
+          if (dest.bestFor) response += ` It\'s especially great for ${dest.bestFor}.`
+          return response
+        }
+        return 'Each destination has its own personality: the raw wilderness of Tsavo East, the rhino country of Tsavo West, the elephant kingdom of Amboseli, and the cultural richness of Samburu. Where does your heart pull you?'
+      }
+      case 'safari_plan':
+        return 'We design safaris around your pace and interests. From 4-day escapes to 14-day adventures, every route is shaped by conversation. Share your dream destination or the kind of experience you\'re after, and I\'ll set the wheels in motion.'
+      case 'birding':
+        return 'Kenya is a birder\'s paradise. Lake Nakuru and Lake Bogoria offer flamingo spectacles, while the Mara hosts 450+ species including the African fish eagle and colourful rollers. Samburu is also home to unique dry-country species. Would you like a birding-focused itinerary?'
+      case 'kilimanjaro':
+        return 'Mount Kilimanjaro is best viewed from Amboseli at sunrise — the snow-capped dome rises above the savannah like a dream. We can build your safari around that one unforgettable morning. Would you like to include Amboseli in your plans?'
+      case 'family':
+        return 'Family safaris are wonderful. We choose camps with family suites, child-friendly guides and gentle game drives so everyone — from toddlers to grandparents — feels at home in the bush. Tell me the ages of your children and I\'ll tailor the recommendations.'
+      case 'honeymoon':
+        return 'A Kenyan safari under the stars is the perfect romantic chapter. We\'ll arrange private dinners, sunset helicopter flights and exclusive camp stays just for two. Which park or experience are you imagining for your trip?'
+      case 'predators':
+        return 'The Mara is predator central — lion, leopard, cheetah and hyena patrol these plains year-round. Our guides know the hot spots and will position you for the perfect sighting. The best time for predator viewing is early morning and late afternoon.'
+      case 'primate':
+        return 'While Kenya is world-famous for savannah safaris, we can also arrange chimpanzee trekking in the nearby forests. For mountain gorillas, our neighbours in Rwanda and Uganda are the best options — let me help you extend your adventure if you\'re interested.'
+      case 'culture':
+        return 'Kenyan culture is rich and vibrant. We arrange visits to Maasai communities where you can learn about their traditions, dance, and way of life. These experiences add a meaningful dimension to any safari. Would you like to include a cultural visit in your itinerary?'
+      case 'beach_holiday':
+        return 'Kenya\'s coast is a world of its own — turquoise water, white sand, and a slower rhythm. Watamu and Diani are our top picks, perfect for dolphin watching, marine parks, and long, unhurried days by the sea. Would you like to pair the coast with a safari for the full Kenyan experience?'
+      case 'travel_tips':
+        return 'Here are some tips from the field:\n\n• Pack light, breathable clothing in neutral tones — bright colours can scare wildlife.\n• Bring a good pair of binoculars — they make all the difference on game drives.\n• The dry seasons (June–October and January–February) offer the best wildlife viewing.\n• Malaria prophylaxis is recommended for coastal and lowland areas.\n• Carry cash in small denominations — many lodges and camps are off-grid.\n\nWould you like advice on anything more specific?'
+      case 'pricing':
+        return 'Every Bree journey is tailored, so we keep pricing personal. Share your travel dates, group size, and preferred style — our team will put together a personalised quotation for you. Would you like to start planning now?'
+      case 'thanks':
+        return 'You\'re very welcome! I\'m always here if you need help planning your safari. Just ask — and I\'ll make sure your next adventure is unforgettable.'
+      case 'goodbye':
+        return 'It was a pleasure chatting with you. Whenever you\'re ready to plan your next Kenyan adventure, I\'ll be here. Safe travels for now!'
+      case 'human_contact':
+        return 'I\'d be happy to connect you with one of our travel consultants. They can handle personalised quotations, booking assistance, and any detailed questions you might have. Would you like me to put you in touch?'
+      case 'booking_start':
+        chatMemory.bookingStep = 1
+        return 'I\'d love to help you book a safari! Let\'s start with the basics — which destination are you most interested in? For example, Maasai Mara, Tsavo, the coast, or somewhere else?'
+      case 'booking_flow':
+        return handleBookingFlow(text)
+      case 'general':
+      default: {
+        const dest = extractDestination(text)
+        if (dest) {
+          chatMemory.destination = dest.name
+          let response = `Great choice! ${dest.name} — ${dest.tag}. ${dest.wildlife ? 'You can expect to see ' + dest.wildlife + '.' : ''} ${dest.activities ? 'Activities include ' + dest.activities + '.' : ''}`
+          const interests = extractInterest(text)
+          if (interests.length > 0) chatMemory.interests = [...chatMemory.interests, ...interests]
+          return response + '\n\nWould you like me to recommend a package or help you plan the details?'
+        }
+        const interests = extractInterest(text)
+        if (interests.length > 0) {
+          chatMemory.interests = [...chatMemory.interests, ...interests]
+          return recommendByInterests(interests)
+        }
+        return 'That sounds like a wonderful idea! I\'m here to help with safari destinations, packages, wildlife experiences, and travel planning. What kind of Kenyan adventure are you dreaming about?'
+      }
+    }
+  }
+
+const sendChat = (suggestion) => {
+    const clean = (suggestion || chatInput).trim()
     if (!clean) return
-    const lower = clean.toLowerCase()
-    let response = 'That sounds like a beautiful way to see Kenya. Tell me your dates and I’ll connect you with a safari expert on WhatsApp.'
-    if (lower.includes('migration') || lower.includes('when') || lower.includes('wildebeest') || lower.includes('great migration')) response = 'The herds usually reach the Mara between July and October. August and September are classic river-crossing months — but the Mara is remarkable all year.'
-    if (lower.includes('coast') || lower.includes('beach') || lower.includes('diani') || lower.includes('watamu') || lower.includes('lamu')) response = 'For warm water and a slower rhythm, I love Watamu and Diani. We can pair either with Tsavo for a seamless salt-and-savannah journey.'
-    if (lower.includes('book') || lower.includes('price') || lower.includes('cost') || lower.includes('how much')) response = 'Every Bree journey is tailored, so we keep pricing personal. Tap “Start planning” and share your dates — our experts will come back with the right route.'
-    if (lower.includes('big five') || lower.includes('lion') || lower.includes('elephant') || lower.includes('leopard') || lower.includes('rhino') || lower.includes('buffalo')) response = 'Kenya is one of the best places to see the Big Five. The Mara and Tsavo offer strong lion and elephant sightings, while Amboseli is famous for its elephant herds against the backdrop of Kilimanjaro.'
-    if (lower.includes('balloon') || lower.includes('hot air') || lower.includes('safari activity') || lower.includes('best for')) response = 'Hot-air ballooning over the Mara at sunrise is unforgettable. We also arrange guided game drives, bush breakfasts, walking safaris and cultural visits with Maasai communities.'
-    if (lower.includes('accommodation') || lower.includes('hotel') || lower.includes('lodge') || lower.includes('camp') || lower.includes('stay')) response = 'We work with boutique lodges, classic safari camps and luxury tented stays — all handpicked for location, comfort and atmosphere. Tell me your vibe and I’ll recommend the perfect fit.'
-    if (lower.includes('tsavo') || lower.includes('amboseli') || lower.includes('samburu') || lower.includes('nakuru') || lower.includes('destination')) response = 'Each destination has its own personality: the raw wilderness of Tsavo East, the rhino country of Tsavo West, the elephant kingdom of Amboseli, and the cultural richness of Samburu. Where does your heart pull you?'
-    if (lower.includes('hello') || lower.includes('hi') || lower.includes('hey') || lower.includes('good morning') || lower.includes('good evening')) response = 'Jambo! Welcome to Bree. Whether you’re after the Great Migration, a quiet coast escape or a luxury fly-in safari — I’m here to help you plan something special.'
-    if (lower.includes('safari') || lower.includes('tour') || lower.includes('itinerary') || lower.includes('plan')) response = 'We design safaris around your pace and interests. From 4-day escapes to 14-day adventures, every route is shaped by conversation. Share your dates and dream spots and I’ll set the wheels in motion.'
-    if (lower.includes('bird') || lower.includes('birding') || lower.includes('flamingo')) response = 'Kenya is a birder’s paradise. Lake Nakuru and Lake Bogoria offer flamingo spectacles, while the Mara hosts 450+ species including the African fish eagle and colourful rollers.'
-    if (lower.includes('kilimanjaro') || lower.includes('mountain') || lower.includes('view')) response = 'Mount Kilimanjaro is best viewed from Amboseli at sunrise — the snow-capped dome rises above the savannah like a dream. We can build your safari around that one unforgettable morning.'
-    if (lower.includes('family') || lower.includes('kids') || lower.includes('children')) response = 'Family safaris are wonderful. We choose camps with family suites, child-friendly guides and gentle game drives so everyone — from toddlers to grandparents — feels at home in the bush.'
-    if (lower.includes('honeymoon') || lower.includes('romantic') || lower.includes('couple') || lower.includes('anniversary')) response = 'A Kenyan safari under the stars is the perfect romantic chapter. We’ll arrange private dinners, sunset helicopter flights and exclusive camp stays just for two.'
-    if (lower.includes('lion') || lower.includes('leopard') || lower.includes('cheetah') || lower.includes('predator')) response = 'The Mara is predator central — lion, leopard, cheetah and hyena patrol these plains year-round. Our guides know the hot spots and will position you for the perfect sighting.'
-    if (lower.includes('gorilla') || lower.includes('chimpanzee')) response = 'While Kenya is world-famous for savannah safaris, we can also arrange chimpanzee trekking in the nearby forests. For mountain gorillas, our neighbours in Rwanda and Uganda are the best options — let me help you extend your adventure.'
+    const intent = detectIntent(clean)
+    const response = generateResponse(intent, clean)
     setChatMessages((messages) => [...messages, { from: 'user', text: clean }, { from: 'guide', text: response }])
     setChatInput('')
   }
@@ -409,7 +639,7 @@ function App() {
 
         <section className="big-five-section">
           <div className="big-five-image" style={{ backgroundImage: `url(/Addo%20and%20Schotia%20Tours.jpeg)` }}><div className="big-five-image__stamp"><span>THE</span><strong>Big<br />Five</strong><small>experience</small></div><div className="big-five-image__caption"><span>01</span><i /><span>05</span><b>TAITA HILLS, KENYA</b></div></div>
-          <div className="big-five-copy page-gutter"><SectionLabel light>02 / THE ICONS</SectionLabel><h2>The rarest<br /><em>kind</em> of ordinary.</h2><p>There is a moment — just before the light turns — when the bush holds its breath. This is why we come. To see the world at its most alive, and to remember we belong to it.</p><div className="animal-list"><div className="animal-list__item is-selected"><span>01</span><strong>Lion</strong><small>the quiet authority</small></div><div className="animal-list__item"><span>02</span><strong>Elephant</strong><small>the ancient memory</small></div><div className="animal-list__item"><span>03</span><strong>Leopard</strong><small>the hidden grace</small></div></div><button className="button button--outline-light" onClick={() => setBookingOpen(true)}>Build my safari</button></div>
+          <div className="big-five-copy page-gutter"><SectionLabel light>02 / THE ICONS</SectionLabel><h2>The rarest<br /><em>kind</em> of ordinary.</h2><p>There is a moment — just before the light turns — when the bush holds its breath. This is why we come. To see the world at its most alive, and to remember we belong to it.</p><div className="animal-list"><div className="animal-list__item is-selected"><span>01</span><strong>Lion</strong><small>the quiet authority</small></div><div className="animal-list__item"><span>02</span><strong>Elephant</strong><small>the ancient memory</small></div><div className="animal-list__item"><span>03</span><strong>Leopard</strong><small>the hidden grace</small></div><div className="animal-list__item"><span>04</span><strong>Buffalo</strong><small>the unpredictable herd</small></div><div className="animal-list__item"><span>05</span><strong>Rhino</strong><small>the armored relic</small></div></div><button className="button button--outline-light" onClick={() => setBookingOpen(true)}>Build my safari</button></div>
         </section>
 
         <section id="migration" className="section page-gutter migration-section">
@@ -442,7 +672,7 @@ function App() {
 
       <AnimatePresence>{bookingSent && <motion.div className="toast-success" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }}><div className="toast-success__icon"><Check size={18} /></div><div><strong>Thank you for booking with Bree Tours & Safaris Ltd.</strong><p>Please check your WhatsApp for your booking confirmation and one of our safari experts will contact you shortly.</p></div><button onClick={() => setBookingSent(false)} aria-label="Dismiss"><X size={15} /></button></motion.div>}</AnimatePresence>
 
-      <div className={`chatbot ${chatOpen ? 'chatbot--open' : ''}`}><AnimatePresence>{chatOpen && <motion.div className="chat-window" initial={{ opacity: 0, y: 15, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 15, scale: 0.96 }}><div className="chat-header"><div className="chat-avatar"><Sparkles size={17} /></div><div><strong>Bree Agent</strong><small>Your Bree guide · online</small></div><button onClick={() => setChatOpen(false)} aria-label="Close assistant"><X size={16} /></button></div><div className="chat-messages">{chatMessages.map((message, index) => <div key={`${message.text}-${index}`} className={`chat-message chat-message--${message.from}`}>{message.text}</div>)}</div>        <div className="chat-suggestions"><button onClick={() => sendChat('When is the wildebeest migration?')}>Wildebeest migration</button><button onClick={() => sendChat('Tell me about the Big Five')}>Big Five</button><button onClick={() => sendChat('Tell me about the coast')}>Coast & beaches</button><button onClick={() => sendChat('What activities do you offer?')}>Activities</button><button onClick={() => sendChat('I want to plan a family safari')}>Family safari</button><button onClick={() => sendChat('Tell me about Kilimanjaro views')}>Kilimanjaro views</button><button onClick={() => sendChat('I want to book')}>Book now</button></div><form className="chat-input" onSubmit={(event) => { event.preventDefault(); sendChat() }}><input value={chatInput} onChange={(event) => setChatInput(event.target.value)} placeholder="Ask Bree Agent anything…" /><button aria-label="Send message"><Send size={16} /></button></form></motion.div>}</AnimatePresence><button className="chat-trigger" onClick={() => setChatOpen((open) => !open)} aria-label="Open safari assistant"><span className="chat-trigger__pulse" /><MessageCircle size={20} />{!chatOpen && <span className="chat-trigger__label">Ask Bree Agent</span>}</button></div>
+      <div className={`chatbot ${chatOpen ? 'chatbot--open' : ''}`}><AnimatePresence>{chatOpen && <motion.div className="chat-window" initial={{ opacity: 0, y: 15, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 15, scale: 0.96 }}><div className="chat-header"><div className="chat-avatar"><Sparkles size={17} /></div><div><strong>Bree Agent</strong><small>Your Bree guide · online</small></div><button onClick={() => setChatOpen(false)} aria-label="Close assistant"><X size={16} /></button></div><div className="chat-messages">{chatMessages.map((message, index) => <div key={`${message.text}-${index}`} className={`chat-message chat-message--${message.from}`}>{message.text}</div>)}</div><div className="chat-suggestions"><button onClick={() => sendChat('When is the wildebeest migration?')}>Wildebeest migration</button><button onClick={() => sendChat('Tell me about the Big Five')}>Big Five</button><button onClick={() => sendChat('Tell me about the coast')}>Coast & beaches</button><button onClick={() => sendChat('What activities do you offer?')}>Activities</button><button onClick={() => sendChat('I want to plan a family safari')}>Family safari</button><button onClick={() => sendChat('Tell me about Kilimanjaro views')}>Kilimanjaro views</button><button onClick={() => sendChat('I want to book')}>Book now</button></div><form className="chat-input" onSubmit={(event) => { event.preventDefault(); sendChat() }}><input value={chatInput} onChange={(event) => setChatInput(event.target.value)} placeholder="Ask Bree Agent anything…" /><button aria-label="Send message"><Send size={16} /></button></form></motion.div>}</AnimatePresence><button className="chat-trigger" onClick={() => setChatOpen((open) => !open)} aria-label="Open safari assistant"><span className="chat-trigger__pulse" /><MessageCircle size={20} />{!chatOpen && <span className="chat-trigger__label">Ask Bree Agent</span>}</button></div>
     </div>
   )
 }
