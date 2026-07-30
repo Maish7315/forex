@@ -50,36 +50,44 @@ const heroSlides = [
     title: 'Meet Kenya\nwith your whole heart.',
     body: 'The red earth, the warm welcome, the first light over the savannah — travel deeper with people who call this place home.',
     cta: 'Experience authentic Kenya',
-    image: '/hero%20section/hero-image-3.jpeg',
+    image: `hero-section/hero-image-3.jpeg`,
+    imageWebp: `hero-section/hero-image-3.jpeg`,
     place: 'Loita Hills · Narok',
     accent: 'sunrise',
+    alt: 'Red earth savannah at sunrise in Loita Hills, Narok',
   },
   {
     kicker: '02 / THE BIG FIVE',
     title: 'Wild, in the\nmost beautiful way.',
     body: 'Track a lion at dawn. Hear an elephant breathe. Let the silence of the bush reset your sense of time.',
     cta: 'Find your wild',
-    image: '/hero%20section/hero-image.jpeg',
+    image: 'hero-section/hero-image.jpeg',
+    imageWebp: `hero-section/hero-image.webp`,
     place: 'Tsavo · Amboseli · Mara',
     accent: 'gold',
+    alt: 'Elephant at sunset in Tsavo National Park',
   },
   {
     kicker: '03 / THE GREAT MIGRATION',
     title: 'Witness nature’s\ngreatest theatre.',
     body: 'Follow the ancient rhythm of the herds across the Mara — with a front-row seat and the time to take it all in.',
     cta: 'Plan your migration',
-    image: '/hero%20section/hero-image-2.jpeg',
+    image: `hero-section/hero-image-2.jpeg`,
+    imageWebp: `hero-section/hero-image-2.jpeg`,
     place: 'Maasai Mara · July–October',
     accent: 'orange',
+    alt: 'Wildebeest crossing during the Great Migration in Maasai Mara',
   },
   {
     kicker: '04 / PARADISE COAST',
     title: 'The ocean is calling.\nAnswer slowly.',
     body: 'Trade the road dust for salt air, turquoise water and long, unhurried days along Kenya’s luminous coast.',
     cta: 'Discover the coast',
-    image: '/hero%20section/hero-image-4.jpeg',
+    image: `hero-section/hero-image-4.jpeg`,
+    imageWebp: `hero-section/hero-image-4.jpeg`,
     place: 'Watamu · Diani · Lamu',
     accent: 'coast',
+    alt: 'Turquoise waters of Kenya\'s coast at Diani Beach',
   },
 ]
 
@@ -98,7 +106,7 @@ const destinations = [
     name: 'Maasai Mara',
     region: 'Rift Valley · 3 nights minimum',
     category: 'Wildlife',
-    image: '/The%20Great%20Migration%20_%20Maasai%20Mara.webp',
+    image: `the-great-migration-maasai-mara.webp`,
     tag: 'The main event',
     wildlife: 'Big five · Blue wildebeest · 450+ birds species · Maasai giraffe',
     activities: 'Game drives · Hot air balloon safari · Bird migration observation · Wildebeest migration',
@@ -107,7 +115,7 @@ const destinations = [
     name: 'Tsavo East',
     region: 'Eastern Kenya · 2 nights minimum',
     category: 'Wilderness',
-    image: '/tsavo.jpeg',
+    image: `tsavo.jpeg`,
     tag: 'Our home ground',
     wildlife: 'Red elephant · Lions',
     activities: 'Yatta Plateau · Lugard Falls · Mudanda Rock · Aruba Dam · Bush breakfast',
@@ -116,7 +124,7 @@ const destinations = [
     name: 'Tsavo West',
     region: 'Eastern Kenya · 2 nights minimum',
     category: 'Wilderness',
-    image: '/rhino.webp',
+    image: `rhino.webp`,
     tag: 'Rhino country',
     wildlife: 'Black rhino · Leopard',
     activities: 'Mzima Springs · Shetani lava flow · Rhino sanctuary · Chaimu Crater · Five Sister Hills · Sundowners',
@@ -134,7 +142,7 @@ const destinations = [
     name: 'Samburu',
     region: 'Northern frontier · 3 nights minimum',
     category: 'Culture',
-    image: '/zebra.jpeg',
+    image: `zebra.jpeg`,
     tag: 'Far from familiar',
     wildlife: 'Grevy’s zebra · Gerenuk · Oryx',
     activities: 'Community visits · Nature walks · River safari',
@@ -143,7 +151,7 @@ const destinations = [
     name: 'Lake Nakuru',
     region: 'Rift Valley · 2 nights minimum',
     category: 'Wildlife',
-    image: '/lake.jpeg',
+    image: `lake.jpeg`,
     tag: 'A quick wild one',
     wildlife: 'White rhino · Black rhino · Waterbuck · Rothschild\'s giraffe · Flamingos',
     activities: 'Menengai Crater · Thomson\'s Falls · Hyrax Hill Prehistoric Site · Lord Egerton Castle · Forest drives',
@@ -161,7 +169,7 @@ const destinations = [
     name: 'Amboseli',
     region: 'Southern Kenya · 2 nights minimum',
     category: 'Wildlife',
-    image: '/Amboseli.jpeg',
+    image: `Amboseli.jpeg`,
     tag: 'Elephant kingdom',
     wildlife: 'Africa bush elephants · Cheetah · Plains zebra · Africa fish eagle',
     activities: 'Large herds of free-ranging elephants',
@@ -170,7 +178,7 @@ const destinations = [
     name: 'Viewing Mount Kilimanjaro',
     region: 'Kenya / Tanzania border',
     category: 'Scenic',
-    image: '/kilimanjaro view/Kilimanjaro.jpeg',
+    image: `kilimanjaro-view/Kilimanjaro.jpeg`,
     tag: "Africa's highest peak",
     wildlife: '',
     activities: '',
@@ -178,10 +186,10 @@ const destinations = [
 ]
 
 const kilimanjaroImages = [
-  '/kilimanjaro view/kilimanjaro (4).jpeg',
-  '/kilimanjaro view/kilimanjaro (2).jpeg',
-  '/kilimanjaro view/Kilimanjaro.jpeg',
-  '/kilimanjaro view/kilimanjaro (3).jpeg',
+  `kilimanjaro-view/kilimanjaro-4.jpeg`,
+  `kilimanjaro-view/kilimanjaro-2.jpeg`,
+  `kilimanjaro-view/Kilimanjaro.jpeg`,
+  `kilimanjaro-view/kilimanjaro-3.jpeg`,
 ]
 
 const packages = [
@@ -191,13 +199,13 @@ const packages = [
 ]
 
 const galleryImages = [
-  { id: 1, title: 'Morning gold', category: 'Wildlife', image: '/sun-set.jpeg', span: 'tall' },
-  { id: 2, title: 'Red earth, open sky', category: 'Drone views', image: '/Real adventures.jpeg', span: 'wide' },
-  { id: 3, title: 'The welcome', category: 'Culture', image: '/maasai.jpeg', span: 'standard' },
-  { id: 4, title: 'A different kind of blue', category: 'Beaches', image: '/Diani.webp', span: 'standard' },
-  { id: 5, title: 'Between worlds', category: 'Luxury lodges', image: '/Fields of Gold.jpeg', span: 'wide' },
+  { id: 1, title: 'Morning gold', category: 'Wildlife', image: `sun-set.jpeg`, span: 'tall' },
+  { id: 2, title: 'Red earth, open sky', category: 'Drone views', image: `real-adventures.jpeg`, span: 'wide' },
+  { id: 3, title: 'The welcome', category: 'Culture', image: `maasai.jpeg`, span: 'standard' },
+  { id: 4, title: 'A different kind of blue', category: 'Beaches', image: `Diani.webp`, span: 'standard' },
+  { id: 5, title: 'Between worlds', category: 'Luxury lodges', image: `fields-of-gold.jpeg`, span: 'wide' },
   { id: 6, title: 'The long crossing', category: 'Migration', image: `${ASSET}photo-1535338454770-8be927b5a00b?auto=format&fit=crop&w=1200&q=86`, span: 'tall' },
-  { id: 7, title: 'Slow afternoons', category: 'Hotels', image: '/Sundowners.jpeg', span: 'standard' },
+  { id: 7, title: 'Slow afternoons', category: 'Hotels', image: `Sundowners.jpeg`, span: 'standard' },
   { id: 8, title: 'Wild at heart', category: 'Wildlife', image: `${ASSET}photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&w=1200&q=86`, span: 'standard' },
 ]
 
@@ -287,6 +295,17 @@ function App() {
     }
     window.addEventListener('pointermove', handlePointer, { passive: true })
     return () => window.removeEventListener('pointermove', handlePointer)
+  }, [])
+
+  useEffect(() => {
+    const nextSlide = (slide + 1) % heroSlides.length
+    const nextImage = new Image()
+    nextImage.src = heroSlides[nextSlide].image
+  }, [slide])
+
+  useEffect(() => {
+    const logo = new Image()
+    logo.src = `bree-logo.png`
   }, [])
 
   useEffect(() => {
@@ -569,7 +588,7 @@ const sendChat = (suggestion) => {
       <header className="site-header">
         {bookingOpen && <button className="booking-page__back" onClick={() => setBookingOpen(false)} aria-label="Back to site"><ArrowLeft size={18} /> Back</button>}
         <a className="brand-lockup" href="#home" onClick={() => scrollTo('home')} aria-label="Bree Tours & Safaris home">
-          <img src="/bree-logo.png" alt="Bree Tours & Safaris" />
+          <img src={`bree-logo.png`} alt="Bree Tours & Safaris" />
           <span><strong>BREE</strong><small>TOURS & SAFARIS</small></span>
         </a>
         <nav className={`main-nav ${mobileMenu ? 'main-nav--open' : ''}`} aria-label="Main navigation">
@@ -621,7 +640,7 @@ const sendChat = (suggestion) => {
               <motion.div variants={fadeUp} className="eyebrow eyebrow--gold"><span className="eyebrow-dot" />{hero.kicker}</motion.div>
               <motion.h1 variants={fadeUp}>{hero.title.split('\n').map((line) => <span key={line}>{line}</span>)}</motion.h1>
               <motion.p variants={fadeUp}>{hero.body}</motion.p>
-              <motion.div variants={fadeUp} className="hero-cta-row"><button className="button button--gold" onClick={() => setBookingOpen(true)}>{hero.cta}</button><button className="play-story" onClick={() => setPaused((value) => !value)}>{paused ? <Play size={14} fill="currentColor" /> : <Pause size={14} fill="currentColor" />} {paused ? 'Play story' : 'Pause story'}</button></motion.div>
+              <motion.div variants={fadeUp} className="hero-cta-row"><button className="button button--gold" onClick={() => setBookingOpen(true)}>{hero.cta}</button><button className="play-story" onClick={() => setPaused((value) => !value)} aria-label={paused ? 'Play story' : 'Pause story'}>{paused ? <Play size={14} fill="currentColor" /> : <Pause size={14} fill="currentColor" />} {paused ? 'Play story' : 'Pause story'}</button></motion.div>
             </motion.div>
             <div className="hero-meta"><div className="hero-location"><MapPin size={15} /> {hero.place}</div><div className="hero-slider-control"><button onClick={() => setSlide((slide - 1 + heroSlides.length) % heroSlides.length)} aria-label="Previous slide"><ArrowLeft size={16} /></button><div className="slide-count"><span>0{slide + 1}</span><i /><span>0{heroSlides.length}</span></div><button onClick={() => setSlide((slide + 1) % heroSlides.length)} aria-label="Next slide"><ArrowRight size={16} /></button></div></div>
           </div>
@@ -638,7 +657,7 @@ const sendChat = (suggestion) => {
         </section>
 
         <section className="big-five-section">
-          <div className="big-five-image" style={{ backgroundImage: `url(/Addo%20and%20Schotia%20Tours.jpeg)` }}><div className="big-five-image__stamp"><span>THE</span><strong>Big<br />Five</strong><small>experience</small></div><div className="big-five-image__caption"><span>01</span><i /><span>05</span><b>TAITA HILLS, KENYA</b></div></div>
+          <div className="big-five-image" style={{ backgroundImage: `url(addo-and-schotia-tours.jpeg)` }} role="img" aria-label="Big Five wildlife in Taita Hills, Kenya"><div className="big-five-image__stamp"><span>THE</span><strong>Big<br />Five</strong><small>experience</small></div><div className="big-five-image__caption"><span>01</span><i /><span>05</span><b>TAITA HILLS, KENYA</b></div></div>
           <div className="big-five-copy page-gutter"><SectionLabel light>02 / THE ICONS</SectionLabel><h2>The rarest<br /><em>kind</em> of ordinary.</h2><p>There is a moment — just before the light turns — when the bush holds its breath. This is why we come. To see the world at its most alive, and to remember we belong to it.</p><div className="animal-list"><div className="animal-list__item is-selected"><span>01</span><strong>Lion</strong><small>the quiet authority</small></div><div className="animal-list__item"><span>02</span><strong>Elephant</strong><small>the ancient memory</small></div><div className="animal-list__item"><span>03</span><strong>Leopard</strong><small>the hidden grace</small></div><div className="animal-list__item"><span>04</span><strong>Buffalo</strong><small>the unpredictable herd</small></div><div className="animal-list__item"><span>05</span><strong>Rhino</strong><small>the armored relic</small></div></div><button className="button button--outline-light" onClick={() => setBookingOpen(true)}>Build my safari</button></div>
         </section>
 
@@ -649,11 +668,11 @@ const sendChat = (suggestion) => {
 
         <section className="coast-section"><div className="coast-image" style={{ backgroundImage: `url(${ASSET}photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2200&q=90)` }} /><div className="coast-overlay" /><div className="page-gutter coast-content"><div><SectionLabel light>04 / SALT & SAVANNAH</SectionLabel><h2>Follow the<br /><em>sun.</em></h2></div><div className="coast-content__aside"><p>Kenya’s coast is a whole different frequency. Turquoise mornings, Swahili stories, and nowhere you need to be by sunset.</p><button className="button button--ivory" onClick={() => setDestination(destinations[2])}>Explore coastal Kenya</button></div></div><div className="coast-orbit"><span>Watamu</span><i /><span>Diani</span><i /><span>Lamu</span></div></section>
 
-        <section id="safaris" className="section page-gutter packages-section"><div className="section-heading"><div><SectionLabel>05 / MADE FOR YOU</SectionLabel><h2>Journeys with<br /><em>intention.</em></h2></div><div className="section-heading__aside"><p>No fixed itineraries. Just a considered starting point — made more personal with every conversation.</p><span className="no-price-note"><Sparkles size={15} /> Every journey is tailored</span></div></div><motion.div className="package-grid" variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>{packages.map((item) => { const Icon = item.icon; return <motion.article key={item.name} variants={fadeUp} className={`package-card package-card--${item.tone}`}><div className="package-card__image"><img src={item.image} alt="" loading="lazy" /><span>{item.index}</span><div className="package-card__icon"><Icon size={20} /></div></div><div className="package-card__body"><div className="package-card__meta"><span>{item.duration}</span><span>{item.place}</span></div><h3>{item.name}</h3><ul>{item.details.map((detail) => <li key={detail}><Check size={14} />{detail}</li>)}</ul><div className="package-card__footer"><span>Contact our<br /><strong>safari experts</strong></span><button className="button button--gold" onClick={() => setBookingOpen(true)}>Book Here</button></div></div></motion.article> })}</motion.div></section>
+        <section id="safaris" className="section page-gutter packages-section"><div className="section-heading"><div><SectionLabel>05 / MADE FOR YOU</SectionLabel><h2>Journeys with<br /><em>intention.</em></h2></div><div className="section-heading__aside"><p>No fixed itineraries. Just a considered starting point — made more personal with every conversation.</p><span className="no-price-note"><Sparkles size={15} /> Every journey is tailored</span></div></div><motion.div className="package-grid" variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>{packages.map((item) => { const Icon = item.icon; return <motion.article key={item.name} variants={fadeUp} className={`package-card package-card--${item.tone}`}><div className="package-card__image"><img src={item.image} alt={item.name} loading="lazy" /><span>{item.index}</span><div className="package-card__icon"><Icon size={20} /></div></div><div className="package-card__body"><div className="package-card__meta"><span>{item.duration}</span><span>{item.place}</span></div><h3>{item.name}</h3><ul>{item.details.map((detail) => <li key={detail}><Check size={14} />{detail}</li>)}</ul><div className="package-card__footer"><span>Contact our<br /><strong>safari experts</strong></span><button className="button button--gold" onClick={() => setBookingOpen(true)}>Book Here</button></div></div></motion.article> })}</motion.div></section>
 
         <section id="gallery" className="section page-gutter gallery-section"><div className="section-heading gallery-heading"><div><SectionLabel>06 / FIELD NOTES</SectionLabel><h2>See it through<br /><em>our eyes.</em></h2></div><div className="gallery-filters">{['All', 'Wildlife', 'Beaches', 'Culture', 'Migration', 'Hotels', 'Luxury lodges', 'Drone views'].map((filter) => <button key={filter} className={galleryFilter === filter ? 'is-active' : ''} onClick={() => setGalleryFilter(filter)}>{filter}</button>)}</div></div><motion.div layout className="gallery-grid">{filteredGallery.map((item) => <motion.button layout key={item.id} className={`gallery-tile gallery-tile--${item.span}`} onClick={() => setLightbox(item)}><img src={item.image} alt={item.title} loading="lazy" /><span className="gallery-tile__shade" /><span className="gallery-tile__caption"><small>{item.category}</small><strong>{item.title}</strong></span><span className="gallery-tile__arrow">View</span></motion.button>)}</motion.div></section>
 
-        <section id="story" className="section story-section"><div className="page-gutter story-grid"><div className="story-visual"><div className="story-circle story-circle--outer" /><div className="story-circle story-circle--middle" /><div className="story-circle story-circle--inner" /><div className="story-card"><img src="/bree-logo.png" alt="Bree Tours & Safaris emblem" /><span>Born between<br />Tsavo & Mara</span></div><div className="story-coordinates">1°18' S<br />35°17' E</div></div><div className="story-copy"><SectionLabel>07 / WHY BREE</SectionLabel><h2>Local is not a<br /><em>look.</em> It’s a way<br />of listening.</h2><p>We are a Kenyan team with a soft spot for the places between the highlights. We know the roads, the families, the hidden viewpoints — and we believe the best safari is the one that leaves room for surprise.</p><div className="values-grid"><div><ShieldCheck size={18} /><strong>Grounded</strong><span>Local knowledge in every route</span></div><div><Heart size={18} /><strong>Considered</strong><span>More care, less checklist</span></div><div><Leaf size={18} /><strong>Conscious</strong><span>Travel that gives back</span></div><div><Headphones size={18} /><strong>There for you</strong><span>Human support, always</span></div></div><button className="text-link" onClick={() => scrollTo('contact')}>Meet the people behind Bree</button></div></div></section>
+        <section id="story" className="section story-section"><div className="page-gutter story-grid"><div className="story-visual"><div className="story-circle story-circle--outer" /><div className="story-circle story-circle--middle" /><div className="story-circle story-circle--inner" /><div className="story-card"><img src={`bree-logo.png`} alt="Bree Tours & Safaris emblem" /><span>Born between<br />Tsavo & Mara</span></div><div className="story-coordinates">1°18' S<br />35°17' E</div></div><div className="story-copy"><SectionLabel>07 / WHY BREE</SectionLabel><h2>Local is not a<br /><em>look.</em> It’s a way<br />of listening.</h2><p>We are a Kenyan team with a soft spot for the places between the highlights. We know the roads, the families, the hidden viewpoints — and we believe the best safari is the one that leaves room for surprise.</p><div className="values-grid"><div><ShieldCheck size={18} /><strong>Grounded</strong><span>Local knowledge in every route</span></div><div><Heart size={18} /><strong>Considered</strong><span>More care, less checklist</span></div><div><Leaf size={18} /><strong>Conscious</strong><span>Travel that gives back</span></div><div><Headphones size={18} /><strong>There for you</strong><span>Human support, always</span></div></div><button className="text-link" onClick={() => scrollTo('contact')}>Meet the people behind Bree</button></div></div></section>
 
         <section className="testimonials-section"><div className="page-gutter"><div className="testimonial-top"><SectionLabel light>08 / KIND WORDS</SectionLabel><div className="testimonial-controls"><button aria-label="Previous testimonial"><ArrowLeft size={16} /></button><button aria-label="Next testimonial"><ArrowRight size={16} /></button></div></div><div className="quote-mark">“</div><blockquote>It didn’t feel like we were being shown Kenya. It felt like Kenya was being introduced to us — slowly, generously, on its own terms.</blockquote><div className="testimonial-person"><div className="avatar avatar--one">AS</div><span><strong>Amelia & Sam</strong><small>London · 9 days in Kenya</small></span><div className="stars"><Star size={13} fill="currentColor" /><Star size={13} fill="currentColor" /><Star size={13} fill="currentColor" /><Star size={13} fill="currentColor" /><Star size={13} fill="currentColor" /></div></div></div></section>
 
@@ -664,7 +683,7 @@ const sendChat = (suggestion) => {
         )}
       </main>
 
-      {!bookingOpen && <footer className="site-footer"><div className="page-gutter footer-top"><div className="footer-brand"><a className="brand-lockup" href="#home" onClick={() => scrollTo('home')}><img src="/bree-logo.png" alt="Bree Tours & Safaris" /><span><strong>BREE</strong><small>TOURS & SAFARIS</small></span></a><p>From Tsavo hospitality<br />to Mara adventure.</p><div className="social-row"><a href="https://instagram.com" aria-label="Instagram"><Instagram size={15} /></a><a href="https://facebook.com" aria-label="Facebook"><Facebook size={15} /></a><a href="https://youtube.com" aria-label="YouTube"><Youtube size={15} /></a><a href="https://x.com" aria-label="X"><Twitter size={15} /></a><a href="https://linkedin.com" aria-label="LinkedIn"><Linkedin size={15} /></a></div></div><div className="footer-links"><div><span>Explore</span><a href="#destinations">{t.destinations}</a><a href="#safaris">{t.safaris}</a><a href="#migration">{t.migration}</a><a href="#gallery">{t.gallery}</a></div><div><span>Get in touch</span><a href="mailto:breetoursandsafaris@gmail.com">Email us</a><a href="https://wa.me/254116600179">WhatsApp</a><a href="tel:+254710986309">Call the team</a><a href="#contact">Find us</a></div><div className="newsletter"><span>Field notes</span><p>Small stories from a big country. Once in a while.</p>{subscribed ? <small style={{ color: 'var(--gold-bright)' }}>Confirmed — you are subscribed.</small> : <form onSubmit={(event) => { event.preventDefault(); setSubscribed(true) }}><input type="email" placeholder="Your email address" aria-label="Your email address" required /><button aria-label="Subscribe"><Send size={15} /></button></form>}<small>No noise. Just wonder.</small></div></div></div><div className="page-gutter footer-bottom"><span>© 2026 Bree Tours & Safaris Ltd.</span><span>Made with care in Kenya <span className="footer-dot">•</span> <a href="https://roy-tecxpro.netlify.app" target="_blank" rel="noreferrer" style={{ textDecoration: 'underline' }}>web developers portfolio</a></span><span>Scroll back up <button onClick={() => scrollTo('home')}><ArrowUpRight size={14} /></button></span></div></footer>}
+      {!bookingOpen && <footer className="site-footer"><div className="page-gutter footer-top"><div className="footer-brand"><a className="brand-lockup" href="#home" onClick={() => scrollTo('home')}><img src={`bree-logo.png`} alt="Bree Tours & Safaris" /><span><strong>BREE</strong><small>TOURS & SAFARIS</small></span></a><p>From Tsavo hospitality<br />to Mara adventure.</p><div className="social-row"><a href="https://instagram.com" aria-label="Instagram"><Instagram size={15} /></a><a href="https://facebook.com" aria-label="Facebook"><Facebook size={15} /></a><a href="https://youtube.com" aria-label="YouTube"><Youtube size={15} /></a><a href="https://x.com" aria-label="X"><Twitter size={15} /></a><a href="https://linkedin.com" aria-label="LinkedIn"><Linkedin size={15} /></a></div></div><div className="footer-links"><div><span>Explore</span><a href="#destinations">{t.destinations}</a><a href="#safaris">{t.safaris}</a><a href="#migration">{t.migration}</a><a href="#gallery">{t.gallery}</a></div><div><span>Get in touch</span><a href="mailto:breetoursandsafaris@gmail.com">Email us</a><a href="https://wa.me/254116600179">WhatsApp</a><a href="tel:+254710986309">Call the team</a><a href="#contact">Find us</a></div><div className="newsletter"><span>Field notes</span><p>Small stories from a big country. Once in a while.</p>{subscribed ? <small style={{ color: 'var(--gold-bright)' }}>Confirmed — you are subscribed.</small> : <form onSubmit={(event) => { event.preventDefault(); setSubscribed(true) }}><input type="email" placeholder="Your email address" aria-label="Your email address" required /><button aria-label="Subscribe"><Send size={15} /></button></form>}<small>No noise. Just wonder.</small></div></div></div><div className="page-gutter footer-bottom"><span>© 2026 Bree Tours & Safaris Ltd.</span><span>Made with care in Kenya <span className="footer-dot">•</span> <a href="https://roy-tecxpro.netlify.app" target="_blank" rel="noreferrer" style={{ textDecoration: 'underline' }}>web developers portfolio</a></span><span>Scroll back up <button onClick={() => scrollTo('home')}><ArrowUpRight size={14} /></button></span></div></footer>}
 
       <AnimatePresence>{destination && <motion.div className="modal-backdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setDestination(null)}><motion.div className={`destination-modal${destination.name === 'Viewing Mount Kilimanjaro' ? ' destination-modal--wide' : ''}`} initial={{ opacity: 0, y: 30, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 20, scale: 0.97 }} onClick={(event) => event.stopPropagation()}>{destination.name === 'Viewing Mount Kilimanjaro' ? (<div className="kilimanjaro-modal-content"><button className="modal-close" onClick={() => setDestination(null)} aria-label="Close destination details"><X size={18} /></button><div className="page-gutter"><SectionLabel>{destination.category} / KENYA & TANZANIA</SectionLabel><h2>Viewing Mount Kilimanjaro</h2><p>The snow-capped peak of Africa's highest mountain — best viewed from the Amboseli plains at sunrise.</p><div className="kilimanjaro-grid">{kilimanjaroImages.map((img, i) => <img key={i} src={img} alt={`Kilimanjaro view ${i + 1}`} />)}</div></div></div>) : (<><button className="modal-close" onClick={() => setDestination(null)} aria-label="Close destination details"><X size={18} /></button><img src={destination.image} alt={destination.name} /><div className="destination-modal__content"><SectionLabel>{destination.category} / KENYA</SectionLabel><h2>{destination.name}</h2><p className="destination-modal__region">{destination.region}</p><div className="modal-detail-grid"><div><span>Wildlife</span><strong>{destination.wildlife}</strong></div><div><span>Best for</span><strong>{destination.activities}</strong></div></div><button className="button button--gold" onClick={() => { setDestination(null); setBookingOpen(true) }}>Book This Safari</button></div></>)}</motion.div></motion.div>}</AnimatePresence>
 
