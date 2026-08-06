@@ -22,7 +22,7 @@ export default defineConfig({
       },
     },
     assetsInlineLimit: 4096,
-    reportCompressedSize: true,
+    reportCompressedSize: false,
     emptyOutDir: true,
   },
   cacheDir: 'node_modules/.vite',
