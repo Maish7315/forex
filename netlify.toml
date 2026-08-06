@@ -1,7 +1,6 @@
 [build]
-  base = "forex"
-  command = "npm run build"
-  publish = "dist"
+  command = "npm --prefix forex ci --no-audit --no-fund && npm --prefix forex run build"
+  publish = "forex/dist"
 
 [build.environment]
   NODE_VERSION = "18"
